@@ -22,7 +22,7 @@ https://git-scm.com/downloads
 
 Terminal:
 ```
-git clone "https://github.com/Le0nyx/testing"
+git clone "https://github.com/Le0nyx/resume"
 ```
 
 ## 📌 What is this repository about?
