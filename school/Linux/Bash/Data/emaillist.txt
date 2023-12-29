@@ -1,0 +1,21 @@
+Email liste für egrep Aufgaben:
+
+
+gültige Emails:
+
+sophia34@gmail.it
+leonardo69@infos.com
+emily45@gmail.com
+Emily45@gmail.com
+
+
+
+Nicht gültige Emails:
+
+leo@hotmail.com
+alpha#gmail.t
+sigma66@hotmaildelivery.com
+test-idk.89
+
+
+

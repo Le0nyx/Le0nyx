@@ -1,0 +1,44 @@
+#!/bin/bash
+
+cd ~/Desktop/school-3bt/Bash-arbeitsblaetter
+echo "Bein Übergeben der Paramenter darauf achten 1. Name und dann 2. Anzahl"
+
+mkdir $1
+cd $1
+
+#$1 = name $2 = counter
+for ((i=0;i<$2;i++))
+do
+	mkdir $i"_"$1
+	
+	cd $i"_"$1
+	
+if [ $i -lt 10 ]
+then
+		touch $1"_0"$i"_Astner_Leon.c"
+		
+	echo "#include <stdio.h>">>$1"_0"$i"_Astner_Leon.c"
+	echo "#include <stdlib.h>">>$1"_0"$i"_Astner_Leon.c"
+	echo " ">>$1"_0"$i"_Astner_Leon.c"
+	echo "int main (void) {">>$1"_0"$i"_Astner_Leon.c"
+	echo "	printf("Hello World");">>$1"_0"$i"_Astner_Leon.c"
+	echo "	return EXIT_SUCCESS;">>$1"_0"$i"_Astner_Leon.c"
+	echo "} ">>$1"_0"$i"_Astner_Leon.c"
+fi
+	
+if [ $i -gt 9 ]	
+then	
+	touch $1"_"$i"_Astner_Leon.c"
+
+	
+	echo "#include <stdio.h>">>$1"_"$i"_Astner_Leon.c"
+	echo "#include <stdlib.h>">>$1"_"$i"_Astner_Leon.c"
+	echo " ">>$1"_"$i"_Astner_Leon.c"
+	echo "int main (void) {">>$1"_"$i"_Astner_Leon.c"
+	echo "	printf("Hello World");">>$1"_"$i"_Astner_Leon.c"
+	echo "	return EXIT_SUCCESS;">>$1"_"$i"_Astner_Leon.c"
+	echo "} ">>$1"_"$i"_Astner_Leon.c"
+fi
+	cd ..
+done
+

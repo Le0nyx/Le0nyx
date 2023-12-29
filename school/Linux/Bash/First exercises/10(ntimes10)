@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Input a number"; 
+read n;
+j=$((10*$n*10));
+echo "10*($n*10)="$j;

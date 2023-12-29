@@ -1,0 +1,22 @@
+#!/bin/bash
+
+cd ~/Desktop/school-3bt/Bash-arbeitsblaetter
+rm -rf exercise_one
+mkdir exercise_one
+cd exercise_one
+
+for ((i=0;i<10;i++))
+do
+	touch "test_"$i".txt"
+done
+
+for fn in *
+do
+	echo $PWD"/test_"$i".txt">>$fn
+done
+
+k="summary.txt"
+
+
+touch $k
+	echo &ls -l -a>>$k

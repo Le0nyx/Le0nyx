@@ -1,0 +1,1 @@
+The Assembler Code uses Mars 4.5 for simulation and execution. The .jar file for Mars is not provided here, as I wish to avoid legal issues. This code can also be run in software like RiSa, but it hasn't been fully tested across multiple platforms.

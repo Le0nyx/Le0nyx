@@ -1,0 +1,86 @@
+
+Theorie für TP von verschiedenen Befehlen:
+
+mkdir = "make directory" Macht einen Ordner    (z.B.  mkdir O1  Erstellt einen Ordner Namens O1)
+ 
+gedit = opens a text editor
+
+cd = "change directory" wählt einen Ordner zu dem man geführt wird (z.B. cd 01)
+
+nano = öffnet texteditor art in der console (z.B. nano Öffnet in dem Terminal einen Texteditor der Console)
+
+echo = gibt text aus. Ein > überschreibt inhalt des dokuments zwei >> gibt einen Wert hinzu (z.B. echo Hallo > FirstTry.txt; und um zu ausführen cat FirstTry.txt; um noch etwas dem Dokument etwas hinzuzufügen echo Random text den man hat >>FirstTry.txt)
+
+rm = "remove" entfernt etwas  (z.B. rm Theorie löscht Theorie)
+
+man = "manual" Hilfsanweisung oder Hilfsbefehl
+
+ls = listet directory Inhalt (z.B. ls listet alle weiteren directories ab diesen Punkt die noch von diesen Punkt weiterführen)
+
+tree = zeigt die verschiedenen Routen für übersicht im directory (z.B. tree)
+
+mv = ist zu bewegen oder zu Namen ändern von Dateien (z.B. move O2 O1 verschiebt den O2 Ordner in den O1 Ordner)
+
+touch= modifiziert den timestamp einer Datei  (z.B.  touch O1    Updatet eine Datei) 
+
+cp= kopiert Dateien und directories (z.B. Theorie O1 kopiert Theorie in den Ordner O1 -r um den ganzen Ordner mit allen Dateien zu verschieben)
+
+snap= Werkzeug um mit snaps zu interagieren
+
+wall= Befehl zum anzeigen eines Inhalts einer Computerdatei oder standart input to all logged-in users
+
+
+A1:
+
+info= Zeigt Information vom jeweilgen Kommand an. Präziser als man
+
+appropos= apropos is used if you dont remember the exact command so it uses keywords trying to figure out what you meant  (apropos [command] [keywords] )
+
+man= manual for system commands  (man [command that you want to know manual of] )
+
+
+A2:
+
+rm -r= removes directories and their contet
+
+rmdir= removes empty directoies
+
+A3:
+
+file= determines the type of a file selected  (file [filename] )
+
+A4:
+
+Wenn Firefox zuvor nicht gestartet wurde oder nicht mehr offen ist und man dann firefox über das Terminal starten und dann bildet sich eine Schleife die Firefox läuft die man mit strg +C abbrechen kann
+
+A5 (OUTDATED-works on older versions of Linux):
+Mit den Befehl kann man eine Website über das Terminal aufrufen aber nur bis zu einer gewissen Weite solange man nur lynx installiert hat.
+
+
+A6:
+
+mit mv kann man einen Namen einer Datei ändern
+
+A7:
+Mit dem Befehl sudo apt-chache show tree kann man die Architektur des Prozzesors sehen, die Version von Linux und welches Distro man heruntergeladen hat und noch weitere Informationen. Ich glaube der Befehl ist Sinnvoll um herauszufinden welche Version man gerade hat von einem Distro, die Größe davon und die Architektur herauszufinden.
+
+A8:
+Der Befehl whoami zeigt an Welcher Benutzer gerade das Terminal Benutzt (Nützlich wenn beim arbeiten mit Servern).
+
+Der Befehl passwd ändert das Momentane Passwort eines Benutzers.
+
+
+A9:
+Der Befehl uname gibt den Namen des Betriebssystems aus (z.B. Linux). Wenn man den Befehl uname -a ausführt zeigt es das Betriebssystem an und den Namen des Computers und noch weitere Informationen.
+
+A10:
+Ausprobieren
+
+(sudo adduser UserName [if needed --force-badname])
+
+(su UserName [after try whoami])
+
+(sudo deluser --remove-home UserName [nur erreibar solagen man nicht im diesem Benutzer eingelogt ist sonst funktionert es nicht] or userdel -r UserName)
+
+
+

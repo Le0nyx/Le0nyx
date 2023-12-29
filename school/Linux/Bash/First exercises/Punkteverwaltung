@@ -1,0 +1,213 @@
+#!/bin/bash
+
+cd ~/Desktop/school-3bt/Bash-arbeitsblaetter
+#rm -rf punkte-folder
+mkdir punkte-folder
+cd punkte-folder
+
+#number code with if statements
+for ((i=1;i<1001;i++))
+do
+
+if [ $i -lt 10 ]
+then
+	touch "000"$i".txt"
+fi
+
+if [ $i -gt 9 ] && [ $i -lt 100 ]
+then
+	touch "00"$i".txt"
+fi
+
+if [ $i -gt 99 ] && [ $i -lt 1000 ]
+then
+	touch "0"$i".txt"
+fi
+
+if [ $i = 1000 ]
+then
+	touch $i".txt"
+fi	
+done
+
+programmStop=0
+while (($programmStop != 1))
+do
+#user input
+echo " "
+echo " ;"
+echo " "
+echo "Wähle eine Option:"
+echo "- [a]dd Bewertung"
+echo "- [n]ew Schüler/in"
+echo "- [r]emove Schüler/in"
+echo "- [p]rint Bewertungen"
+echo "- [e]xit Programm"
+echo " "
+
+printf '%s' "Eingabe: " # printf gibt Text ohne newline am Ende aus
+read eingabe
+
+
+#input reaction
+case $eingabe in
+a)
+# add Bewertung
+printf '%s' "Matrikelnummer angeben: "
+read matrikelnummer
+
+while ! [ $matrikelnummer -gt 0 ] && [ $matrikelnummer -lt 1001 ]
+do
+printf '%s' "Please re-enter your Input: "
+read matrikelnummer
+done
+
+printf '%s' "Welches Arbeitsblatt angeben: "
+read arbeitsblatt
+
+printf '%s' "Punkte für SuS "$matrikelnummer" eingeben: "
+read punkteFuerAA
+
+if [ $matrikelnummer -lt 10 ]
+then
+	echo "Arbeitsblatt "$arbeitsblatt": "$punkteFuerAA>>"000"$matrikelnummer".txt"
+fi
+
+if [ $matrikelnummer -gt 9 ] && [ $matrikelnummer -lt 100 ]
+then
+	echo "Arbeitsblatt "$arbeitsblatt": "$punkteFuerAA>>"000"$matrikelnummer".txt"
+
+fi
+
+if [ $matrikelnummer -gt 99 ] && [ $matrikelnummer -lt 1000 ]
+then
+	echo "Arbeitsblatt "$arbeitsblatt": "$punkteFuerAA>>"000"$matrikelnummer".txt"
+fi
+
+if [ $matrikelnummer = 1000 ]
+then
+	echo "Arbeitsblatt "$arbeitsblatt": "$punkteFuerAA>>"000"$matrikelnummer".txt"
+fi	
+
+;;
+n)
+# new Student
+printf "(ACHTUNG: Der alte Benutzer dieser Matrikelnummer zwischen 1-1000 wird überschrieben) \n"
+printf '%s' "Gib eine Matrikelnummer ein für einen neuen Schüler: "
+
+read newStudent
+
+while ! [ $newStudent -gt 0 ] && [ $newStudent -lt 1001 ]
+do
+printf '%s' "Please re-enter your Input: "
+read newStudent
+done
+
+if [ $newStudent -lt 10 ]
+then
+	touch "000"$newStudent".txt"
+fi
+
+if [ $newStudent -gt 9 ] && [ $i -lt 100 ]
+then
+	touch "00"$newStudent".txt"
+
+fi
+
+if [ $newStudent -gt 99 ] && [ $i -lt 1000 ]
+then
+	touch "0"$newStudent".txt"
+fi
+
+if [ $newStudent = 1000 ]
+then
+	touch $newStudent".txt"
+fi	
+
+;;
+r)
+# remove Student
+printf '%s' "Gib eine Matrikelnummer ein um einen Schüler zu löschen: "
+read removeStudent
+
+while ! [ $removeStudent -gt 0 ] && [ $removeStudent -lt 1001 ]
+do
+printf '%s' "Please re-enter your Input: "
+read removeStudent
+done
+
+if [ $removeStudent -lt 10 ]
+then
+	rm "000"$removeStudent".txt"
+fi
+
+if [ $removeStudent -gt 9 ] && [ $i -lt 100 ]
+then
+	rm "00"$removeStudent".txt"
+
+fi
+
+if [ $removeStudent -gt 99 ] && [ $i -lt 1000 ]
+then
+	rm "0"$removeStudent".txt"
+fi
+
+if [ $removeStudent = 1000 ]
+then
+	rm $removeStudent".txt"
+fi	
+
+;;
+p)
+# print Bewertungen
+printf '%s' "Gib eine Matrikelnummer ein um den Inhalt auszugeben: "
+read printText
+
+while ! [ $printText -gt 0 ] && [ $printText -lt 1001 ]
+do
+printf '%s' "Please re-enter your Input: "
+read printText
+done
+
+if [ $printText -lt 10 ]
+then
+	echo " "
+	echo "-/"
+	cat "000"$printText".txt"
+	echo "/-"
+fi
+
+if [ $printText -gt 9 ] && [ $i -lt 100 ]
+then
+	echo " "
+	echo "-/"
+	cat "00"$printText".txt"
+	echo "/-"
+
+fi
+
+if [ $printText -gt 99 ] && [ $i -lt 1000 ]
+then
+	echo " "
+	echo "-/"
+	cat "0"$printText".txt"
+	echo "/-"
+fi
+
+if [ $printText = 1000 ]
+then
+	echo " "
+	echo "-/"
+	cat $printText".txt"
+	echo "/-"
+fi	
+
+;;
+e)
+# exits programm
+programmStop=1
+;;
+esac
+
+done
+
