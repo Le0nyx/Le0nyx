@@ -1,391 +1,262 @@
+/*
+File: 6-linked_list.c
+Date: 11-04-2024  08:34
+Author: Leon A.
+File Description: ---
+
+*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
-struct PERSON{
-    char name[30];
-    char surname[30];
-    int age;
 
-    struct PERSON *next;
-};
+typedef struct linked_list{
+    long long num;
+    char name[50];
 
-struct PERSON *head;
-struct PERSON *temp;
-struct PERSON *temp2;
- 
- 
-int to_choose() {
-    int decision = 0;
+    struct linked_list *next;
+}KNOT;
 
-    system("cls");
-    printf("\n -----------------------\n[1] Add at last  \n[2] Add at chosen point  \n[3] Print all  \n[4] Print at chosen point \n[5] Delete at chosen point  \n[6] Swap lists \n[7] End Programm \n \n : ");
-    scanf("%d", &decision);
+void UI_list(KNOT *start);
+void add_knot(KNOT **start, long long x, char *name);
+void delete_knot(KNOT **start, long long x);
+void print_knots(KNOT *start);
+void free_all(KNOT *start);
+KNOT *search_knot(KNOT *start, long long x);
+KNOT *getLast_Knot(KNOT *start);
+KNOT *getFirst_KNOT(KNOT *start);
+int count_knots(KNOT *start);
 
-    while(decision<0||decision>7){ //to big of input or wrong. Doesnt include char
-        system("cls");
 
-        printf("\n-----------------------\n Wrong Input.  \n-----------------------");
-        printf("\n[1] Add at last  \n[2] Add at chosen point  \n[3] Print all  \n[4] Print at chosen point \n[5] Delete at chosen point  \n[6] Swap lists\n[7] End Programm \n \n : ");
-        scanf("%d", &decision);
-    }
+int main(int argc, char* argv[]){
+    KNOT *start = NULL;
 
-
-    return decision;
-}
-
-
-void enter_to_continue(){
-
-    char programm[20];
-    printf("\n Press Enter to continue... ");
-    fflush(stdin);
-    fgets(programm, 20, stdin);
-    system("cls");
-}
-
-
-void print_all(struct PERSON *temp, int list_amount){ // ig prints all
-    int counter1 = 0;
-
-    if(list_amount!=0){
-        system("cls");
-
-        while(temp!=NULL){
-            counter1++;
-            printf("\n %d. \n\n Name: %s \n Surname: %s \n Age: %d \n-------------------",counter1, temp->name, temp->surname, temp->age);
-            temp = temp->next;
-        }
-        enter_to_continue();
-    } else{
-        system("cls");
-        printf("\n No Lists available \n-----------------");
-        enter_to_continue();
-    }
-}
-
-void print_at_point(struct PERSON *temp, int list_amount){
-    int decision_ig = 0;
-    system("cls");
-
-    do{
-        if(list_amount==0){
-            printf("\n No Lists available \n-----------------");
-            enter_to_continue();
-            break;
-        }
-
-        system("cls"); //refresh it
-
-        if(decision_ig>list_amount||decision_ig<0){
-            printf("\n Wrong Input. Please try again. \n");
-        }
-
-        
-        printf("\n ----------------- \n Lists available: %d \n Which one to print: ", list_amount);
-        scanf("%d", &decision_ig);
-
-    } while(decision_ig>list_amount||decision_ig<0);
-
-    if(list_amount!=0){
-        for(int i = 1;i<decision_ig;i++){
-            temp = temp->next;
-        }
-        system("cls");
-        printf("\n %d.\n\n Name: %s \n Surname: %s \n Age: %d \n -----------------",decision_ig, temp->name, temp->surname, temp->age);
-
-
-        enter_to_continue();
-    }
-}
-
-
-void addList(struct PERSON *ptr){ //reads in the listitems to the given pointer
-    char name2[30];
-    char surname2[30];
-    int age2;
-    printf("\n Enter the name: ");
-    fflush(stdin);
-    fgets(name2, 30, stdin);
-    strcpy(ptr->name, name2); //copies over to the list   
-    printf("\n Enter the surname: ");
-    fflush(stdin);
-    fgets(surname2, 30, stdin);
-    strcpy(ptr->surname, surname2);
-    printf("\n Enter the age: ");
-    scanf("%d", &age2);
-     ptr->age= age2;
-}
-
-
-void swapping(struct PERSON *head, struct PERSON *first_address, struct PERSON *second_address){
-//got head, previouse to first adress and previouse of second address
-
-    if(first_address==head){ //look if they are first
-
-
-    }else{
-
-
-        if(first_address != second_address){ //notice if its the same or not
-            temp = first_address->next;
-            first_address->next = second_address->next;
-            second_address->next = temp;
-            //the next of first shall be changed with next of second
-
-        } else{ //if the adresses are the same
-            system("cls");
-            printf("\n Trying to swap the same address \n Try again with diffrent positions");
-            enter_to_continue();
-        }
-    }
-}
-
-
-
-int main(){
-    int is_Done = 0; //is to end the programm
-    int decision1 = 0;
-    int list_amount = 0;
-
-
-    system("cls");
-    printf("\n This programm represents linked lists\n---------------------------------- \n");
-    enter_to_continue();
-
-    while(is_Done!=1){ //Programm itself
-        decision1 = to_choose();
-
-        if (decision1 == 1) { //at at last
-            system("cls");
-
-            struct PERSON *ptr = malloc(sizeof(struct PERSON)); //the type of the pointer is the struct
-            addList(ptr);
-
-
-            //add it to the list
-
-            if(list_amount==0){ //if its the newest element or first
-                ptr->next = NULL; //switch out the pointers to where
-                head = ptr;
-
-            } else{ //if any other one gets added
-                temp = head;
-
-                while(temp->next!=NULL){ //finds last address
-                    temp = temp->next;
-                }
-
-                temp->next = ptr; //switcherone
-                ptr->next = NULL;
-            }
-
-            list_amount++;
-        }
-
-
-
-        if(decision1 == 2){ // add at chosen point
-            int add_at_point_decision = 1;
-            int locked = 0;
-
-            do{ //if not the right thing chosen
-                system("cls");
-
-                if(add_at_point_decision<1||add_at_point_decision>list_amount+1){
-                    printf("\n ------------------- \n Wrong Input. Try within bounds \n");
-                }
-                printf(" List amount: %d\n-------------------\n", list_amount);
-                
-                printf("\n Where to add: ");
-                scanf("%d", &add_at_point_decision);
-                //chosen point still missing
-            }while(add_at_point_decision<1||add_at_point_decision>list_amount+1);
-
-
-            system("cls");
-
-            struct PERSON *ptr = malloc(sizeof(struct PERSON)); //the type of the pointer is the struct
-            addList(ptr);
-
-
-            //cases
-            if(list_amount == 0 && add_at_point_decision == 1){ // no lists
-                head = ptr;
-                ptr->next = NULL;
-                
-                locked = 1;
-            }
-
-
-            if(add_at_point_decision == list_amount+1 && list_amount >= 1 && locked != 1){ //add at last
-                temp = head;
-
-                while(temp->next!=NULL){ //finds last address
-                    temp = temp->next;
-                }
-
-                temp->next = ptr;
-                ptr->next = NULL;
-                
-                locked = 1;
-            }
-
-            if(add_at_point_decision == 1 && list_amount != 0 && locked != 1){ //add at start
-                temp = head;
-                head = ptr;
-                ptr->next = temp;
-                
-                locked = 1;
-            }
-
-            if(list_amount != 0 && add_at_point_decision!=list_amount+1 && add_at_point_decision!=1 && locked != 1){//add inbetween
-                temp = head;
-
-                for(int i = 1;i<add_at_point_decision-1;i++){ //searches the pointer before the one to add ig
-                    temp = temp->next;
-                }
-                //next one after temp is to be added
-                ptr->next = temp->next;
-                temp->next = ptr;
-
-                locked = 1;
-            }
-            list_amount++;
-            
-            //probably collides via the list_amount++;
-
-        }
-        
-
-        if(decision1 == 3) { //print all
-            temp = head;
-            print_all(temp, list_amount);
-        }
-
-        if(decision1 == 4){ //print at chosen point
-            print_at_point(head, list_amount);
-        }
-
-
-        if(decision1 == 5){ //delete at chosen point
-            int decision_ig = 0;
-            temp = head;
-
-            do{
-                if(list_amount==0){
-                    system("cls");
-                    printf("\n No Lists available \n-----------------");
-                    enter_to_continue();
-                    break;
-                }
-
-                system("cls"); //refresh it
-
-                if(decision_ig>list_amount||decision_ig<0){
-                    printf("\n Wrong Input. Please try again. \n");
-                }
-
-                
-                printf("\n ----------------- \n Lists available: %d \n Which one to delete: ", list_amount);
-                scanf("%d", &decision_ig);
-
-            } while(decision_ig>list_amount||decision_ig<0);
-
-
-            if(list_amount==decision_ig){ //last one but also first one
-                if(list_amount==1){ //there is only one
-                    free(temp);
-                    list_amount--;
-                }
-
-                if(list_amount>1){ //delete last one
-                    for(int i = 1;i<(decision_ig-1);i++){ //makes it so temp is one before the one to remove
-                        temp = temp->next;
-                    }
-
-                    temp2 = temp->next;
-                    temp->next = NULL;
-                    free(temp2);
-                    list_amount--;
-                }
-
-            } else{ //if there are 3 or more
-                if(decision_ig==1){ //more than just one
-                    head = temp->next;
-                    free(temp);
-                    list_amount--;
-                } else{ //3 or more
-
-                    for(int i = 1;i<(decision_ig-1);i++){ //makes it so temp is one before the one to remove
-                        temp = temp->next;
-                    }
-                    temp2 = temp->next;
-                    temp->next = temp->next->next;
-
-                    free(temp2);
-                    list_amount--;
-                }
-
-
-            }
-
-
-        }
-        if(decision1 == 6){ //swapping function
-            system("cls");
-
-            if(list_amount>1){
-                int first_swap = 1;
-                int second_swap = 1;
-
-                //determine the addresses
-                temp = head;
-                temp2 = head;
-
-                do{
-                    printf("\n What Number to swap: ");
-                    scanf("%d", &first_swap);
-                }while(first_swap < 1 || first_swap > list_amount);
-
-                do{
-                    printf("\n Swap with: ");
-                    scanf("%d", &second_swap);
-                }while(second_swap < 1 || second_swap > list_amount);
-
-                //it appears i need to previouse adresses to swap out the temp->next
-                for(int i = 0;i<first_swap-1;i++){
-                    temp = temp->next;
-                }
-                
-                for(int j = 0;j<second_swap-1;j++){
-                    temp2 = temp2->next;
-                }
-                
-                swapping(head, temp, temp2); //gives each the previouse one /can see if one is the first by checking with head
-
-            }else{
-                system("cls");
-                printf("\n Not enough lists to swap\n -------------------------");
-                enter_to_continue();
-            }
-        }
-
-
-        if(decision1 == 7){ //ends programm
-            is_Done = 1;
-        }
-    }
+    UI_list(start); //works
     
+    // Testing
+    add_knot(&start, 1, "Arron Kyller");
+    add_knot(&start, 2, "Arroz Keller");
+    add_knot(&start, 3, "Mark Rober");
+    add_knot(&start, 4, "Raubert Banks");
+    add_knot(&start, 5, "Arron Kxller");
+    add_knot(&start, 6, "Xander Yor");
 
-    //free all before closing
-    if(list_amount>0){ //frees everything else
-        while(temp!=NULL){
-            temp2 = temp;
-            temp = temp->next;
-            free(temp2);
-        }
+    delete_knot(&start, 3);
+    printf("\nList has %d Knots", count_knots(start));
+    print_knots(start);
+
+    KNOT *found = search_knot(start, 4);
+    if(found != NULL){
+        printf("\n\nFound %s with Phonenumber %lld", found->name, found->num);
+    }else{ printf("\n\nNot Found in search"); }
+
+    KNOT *temp2 = getFirst_KNOT(start);
+    if(temp2 != NULL){
+        printf("\nThe first Knot has following infos: %lld %s\n", temp2->num, temp2->name);
+    }
+    temp2 = getLast_Knot(start);
+    if(temp2 != NULL){
+        printf("\nThe last Knot has following infos: %lld %s\n", temp2->num, temp2->name);
     }
 
+    // free all
+    free_all(start);
+    printf("\n\nEnd of Code with all freed\n");
+    
     return 0;
+}
+
+
+void UI_list(KNOT *start){
+    KNOT *temp2 = NULL;
+    KNOT *temp3 = NULL;
+
+    int choice = 5;
+
+    while(choice > 0 && choice < 8){
+        printf("\n [1] Add Knot"); 
+        printf("\n [2] Delete Knot");
+        printf("\n [3] Print Knots");
+        printf("\n [4] Search Knot");
+        printf("\n [5] Count Knots");
+        printf("\n [6] Get Last Knot");
+        printf("\n [7] Get First Knot");
+        printf("\n [Else] Exit");
+
+        printf("\n Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice){
+            case 1:
+                printf("\n Enter the Phonenumber: ");
+                long long num;
+                scanf("%lld", &num);
+                printf("\n Enter the Name: ");
+                char name[50];
+                
+                fflush(stdin);
+                fgets(name, 50, stdin);
+                fflush(stdin);
+
+                add_knot(&start, num, name);
+                break;
+            case 2:
+                printf("\n Enter the Phonenumber: ");
+                long long num2;
+                scanf("%lld", &num2);
+                
+                delete_knot(&start, num2);
+                break;
+            case 3:
+                print_knots(start);
+                break;
+            case 4:
+                printf("\n Enter the Phonenumber: ");
+                long long num3;
+                scanf("%lld", &num3);
+
+                KNOT *found = search_knot(start, num3);
+                if(found != NULL){
+                    printf("\n\nFound %s with Phonenumber %lld", found->name, found->num);
+                }else{ printf("\n\nNot Found in search"); }
+                break;
+            case 5:
+                printf("\nList has %d Knots", count_knots(start));
+                break;
+            case 6:
+                temp2 = getLast_Knot(start);
+                if(temp2 != NULL){
+                    printf("\nThe last Knot has following infos: %lld %s\n", temp2->num, temp2->name);
+                }else{ printf("\n No Element \n"); }
+                break;
+            case 7:
+                temp3 = getFirst_KNOT(start);
+                if(temp3 != NULL){
+                    printf("\nThe first Knot has following infos: %lld %s\n", temp3->num, temp3->name);
+                }else{ printf("\n No Element \n"); }
+                break;
+            default:
+                free_all(start);
+                printf("\n\nEnd of Code with all freed\n");
+                
+                choice = -1; //to break out of loop
+
+                break;
+        }
+    }
+}
+
+
+void free_all(KNOT *start){
+    KNOT *temp = start;
+    while (temp != NULL) {
+        KNOT *next = temp->next;
+        free(temp);
+        temp = next;
+    }
+}
+
+
+void print_knots(KNOT *start){
+    KNOT *temp = start;
+    while(temp != NULL){
+        printf("\n%lld : %s", temp->num, temp->name );
+        temp = temp->next; //go thru till NULL
+    }
+}
+
+//needs to auto sort itself into the right slot
+void add_knot(KNOT **start, long long x, char *name){ //pointer on pointer so the pointer can be changed
+    KNOT *p1 = (KNOT *)malloc(sizeof(KNOT));
+    if(p1 == NULL){ printf("\n ERRROR OCCURED ALLOCATING MEMORY"); return; }
+    p1->next = NULL;
+
+    p1->num = x;
+    strcpy(p1->name, name);
+
+    KNOT *temp = *start;
+    if(*start == NULL){
+        *start = p1;
+    }else{ //if start == null
+
+        KNOT *prev = NULL;
+        KNOT *curr = *start;
+        while(curr != NULL && strcmp(p1->name, curr->name) > 0){ // strcmp returns 0 if equal, 1 if p1 > curr, -1 if p1 < curr
+            prev = curr;
+            curr = curr->next;
+        }
+        if(prev == NULL){ //if to add as first
+            p1->next = *start;
+            *start = p1;
+        }else{ //add inbetween and at last
+            prev->next = p1;
+            p1->next = curr;
+        }
+    }
+}
+
+
+void delete_knot(KNOT **start, long long x){
+    if(*start == NULL){ printf("\nList is empty"); return; } 
+
+    if((*start)->num == x){ //edge case
+        KNOT *temp = *start;
+        *start = (*start)->next;
+        free(temp);
+        return;
+    }
+
+    KNOT *temp = *start;
+    while(temp->next != NULL){
+        if(temp->next->num == x){
+            KNOT *temp2 = temp->next; //to free the one before
+            temp->next = temp->next->next; //to skip deleted one
+            free(temp2);
+            return;
+        }
+        temp = temp->next; // find next with null
+    }
+    printf("\nKnot not found to delete"); //if error occures
+}
+
+
+KNOT *search_knot(KNOT *start, long long x){
+    KNOT *temp = start;
+    while(temp != NULL){
+        if(temp->num == x){
+            return temp;
+        }
+        temp = temp->next;
+    }
+    return NULL;
+}
+
+
+int count_knots(KNOT *start){
+    int count = 0;
+    KNOT *temp = start;
+    while(temp != NULL){
+        count++;
+        temp = temp->next;
+    }   
+    return count;
+}
+
+
+KNOT *getLast_Knot(KNOT *start){
+    KNOT *temp = start;
+
+    if(start == NULL){
+        return NULL;
+    }
+
+    while(temp->next != NULL){
+        temp = temp->next;
+    }   
+    return temp;
+}
+
+
+KNOT *getFirst_KNOT(KNOT *start){ 
+    return start; 
 }
