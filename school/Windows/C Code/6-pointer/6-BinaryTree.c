@@ -1,318 +1,200 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <time.h>
-#define SIZEARR 100
-//
-typedef struct node
-{
-    int data;
-    struct node *left;
-    struct node *right;
+/*
+File: 07-BinaryTree.c
+Date: 29-04-2024  12:53
+Author: Leon A.
+File Description: ---
 
-} NODE;
+*/
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
-int nodeCounter = 0;
-int *list_ptr;
-NODE *root = NULL;
-NODE *temp = NULL;
-NODE *temp2 = NULL;
 
-// INHALTSANGABE
-void UI();
-void readData(int decision);
-NODE *createNode(int data);
-void addNode(int data);
-void delNode(int data);
-void searchData(int decision);
-void free_all(NODE *root1);
-void fancyPrint(NODE *root, int space);
-void printTree();
-void inOrderPrint(NODE *root1);
-void preOrderPrint(NODE *root1);
-void postOrderPrint(NODE *root1);
-void addRNJesus();
+typedef struct note_strc{
+    int num;
 
-int main()
-{
-    system("cls");
-    printf("\n This Programm is represent a Tree \n-----j-o-e-_-m-a-m-a-_-h-o-t-----\n");
-    UI();
+    struct note_strc *left;
+    struct note_strc *right;
+}NODE;
+
+
+void add_Node_recur(NODE **root, int value);
+void delete_Node(NODE **root, int value);
+void print_Nodes_Prefix(NODE *root);
+void print_Nodes_Infix(NODE *root);
+void print_Nodes_Postfix(NODE *root);
+void free_all(NODE *root);
+void UI(NODE *root);
+int search_smallest(NODE *root);
+NODE *search_Node(NODE *root, int value);
+
+
+int main(int argc, char* argv[]){
+    NODE *root = NULL;
+    printf("\n This Code represents a BST");
+
+    UI(root);
+
     free_all(root);
-
     return 0;
 }
 
-void UI()
-{
-    int decision = 1;
-    printf("[1]Add Node\t[2]Delete Node\t[3]Print Tree\t[4]Fancy Print\t[5]Add Random\t[6]Search Data\t[0]EXIT\n> ");
-    scanf("%d", &decision);
-    while (decision)
-    {
-        switch (decision)
-        {
-        case 1:
-            readData(1);
-            break;
-        case 2:
-            readData(2);
-            break;
-        case 3:
-            printTree();
-            break;
-        case 4:
-            system("cls");
-            printf("\n Fancyprint: \n\n");
-            fancyPrint(root, 0);
-            printf("\n\n");
-            break;
-        case 5:
-            addRNJesus();
-            break;
-        case 6:
-            readData(3);
-            break;
-        }
-        printf("[1]Add Node\t[2]Delete Node\t[3]Print Tree\t[4]Fancy Print\t[5]Add Random\t[6]Search Data\t[0]EXIT\n> ");
-        scanf("%d", &decision);
-    }
-}
 
-void readData(int decision)
-{
-    int data;
-    system("cls");
-    if (decision == 1)
-    {
-        printf("\nEnter a value (0-999)\n> ");
-        scanf("%d", &data);
-        system("cls");
-        addNode(data);
-    }
-    else if (decision == 2)
-    {
-        printf("\nWhich node do you want to delete\n> ");
-        scanf("%d", &data);
-        system("cls");
-        delNode(data);
-    }
-    else if (decision == 3)
-    {
-        printf("\nWhich number do you want to search\n> ");
-        scanf("%d", &data);
-        system("cls");
-        searchData(data);
-    }
-}
+void UI(NODE *root){
+    while(4){ //UI for choosing
+        printf("\n\n\n [1] Add Node");
+        printf("\n [2] Print Nodes");
+        printf("\n [3] Search Node");
+        printf("\n [4] Delete Node");
+        printf("\n [5] Exit");
+        printf("\n\n Enter your choice: ");
+        int choice = 0;
+        scanf("%d", &choice);
 
-NODE *createNode(int data)
-{
-    NODE *newNode = malloc(sizeof(NODE));
-    if (newNode == NULL)
-    {
-        printf("Failed to allocate node\n");
-        return NULL;
-    }
-    newNode->data = data;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    return newNode;
-}
+        switch(choice){
+            case 1:
+                printf("\n Enter value for new Node: ");
+                int value5 = 0;
+                scanf("%d", &value5);
 
-void addNode(int data)
-{
-    NODE *addedNote = createNode(data);
-    NODE *current = root;
-    if (root != NULL)
-    {
-        while (1)
-        {
-            if (current->data <= data)
-            {
-                if (current->right == NULL)
-                {
-                    current->right = addedNote;
-                    printf("Added note on right of %d\n", current->data);
-                    break;
-                }
-                current = current->right;
-            }
-            else
-            {
-                if (current->left == NULL)
-                {
-                    current->left = addedNote;
-                    printf("Added note on left of %d\n", current->data);
-                    break;
-                }
-                current = current->left;
-            }
-        }
-    }
-    else
-    {
-        root = addedNote;
-        printf("Root is now %d\n", addedNote->data);
-    }
-}
+                add_Node_recur(&root, value5);
+                break;
+            case 2:
+                if(root == NULL){ printf("\n No nodes to print"); break; }
+                printf("\nPrefix order: ");
+                print_Nodes_Prefix(root);
+                printf("\nInfix order: ");
+                print_Nodes_Infix(root);
+                printf("\nPostfix order: ");
+                print_Nodes_Postfix(root);
+                break;
+            case 3:
+                if(root == NULL){ printf("\n No nodes to search"); break; } //search for node (value
+                printf("\n Enter the number to search: ");
+                int value = 0;
+                scanf("%d", &value);
 
-NODE *findMin(NODE *node)
-{
-    while (node->left != NULL)
-    {
-        node = node->left;
-    }
-    return node;
-}
+                NODE *temp = search_Node(root, value);
+                if(temp != NULL){ printf("\n Node found: %d", temp->num); }
+                else{ printf("\n Node not found"); }
 
-void delNode(int data)
-{
+                break;
+            case 4:
+                if(root == NULL){ printf("\n No nodes to delete"); break; } //delete node
+                printf("\n Enter the number to delete: ");
+                int value1 = 0;
+                scanf("%d", &value1);
 
-    NODE *current = root;
-
-    if (root == NULL)
-    {
-        printf("root is NULL\n");
-        return;
-    }
-
-    while (1)
-    {
-        if (current->data < data)
-        {
-            if (current->right != NULL)
-            {
-                if ((current->right)->data == data)
-                {
-                    NODE *deleted = current->right;
-                    current->right = deleted->left;
-                }
-            }
-        }
-    }
-}
-
-void searchData(int decision)
-{
-    int pos = 0;
-
-    NODE *current = root;
-    for (int i = 0; current->data != decision; i++)
-    {
-        if (current->data >= decision)
-        {
-            if (current->right == NULL)
-            {
-                printf("\nNumber not in Maokai\n");
+                delete_Node(&root, value1);
+                break;
+            case 5: //close program
                 return;
+                break;
+            default:
+                printf("\n Invalid choice");
+        }
+    }
+}
+
+
+void add_Node_recur(NODE **root, int value){
+    if(*root == NULL){
+        *root = (NODE *)malloc(sizeof(NODE));
+        (*root)->num = value;
+        (*root)->left = NULL;
+        (*root)->right = NULL;
+    }
+    else{
+        if((*root)->num <= value){
+            add_Node_recur(&(*root)->right, value);
+        }
+        else{
+            add_Node_recur(&(*root)->left, value);
+        }
+    }
+}
+
+
+NODE *search_Node(NODE *root, int value){ //searches for the Node recursivly
+    if(root != NULL){ //retrun if Null (everything goes into this  since recursivly eventually)
+        if(root->num == value){ //if value of current node is right
+            return root;
+        }
+        NODE *temp = search_Node(root->left, value); //recall function with new node
+        if(temp != NULL){
+            return temp; //if value found
+        }
+        NODE *temp1 = search_Node(root->right, value); //recall function with new node
+        if(temp1 != NULL){ //if value found
+            return temp1;
+        }
+    }
+    return NULL;
+}
+
+
+int search_smallest(NODE *root){ //searches for the smallest node
+    if(root->left == NULL){
+        return root->num;
+    }
+    return search_smallest(root->left);
+}
+
+
+void delete_Node(NODE **root, int value){
+    if(*root != NULL){
+        if((*root)->num == value){
+            if((*root)->left == NULL && (*root)->right == NULL){
+                free(*root);
+                *root = NULL;
+            }else if((*root)->left == NULL){
+                NODE *temp = *root;
+                *root = (*root)->right;
+                free(temp);
+            }else if((*root)->right == NULL){
+                NODE *temp = *root;
+                *root = (*root)->left;
+                free(temp);
+            }else{ //delete if both sides have a pointer and replace with smallest from right side
+                (*root)->num = search_smallest((*root)->right);
+                delete_Node(&(*root)->right, (*root)->num);
             }
-            current = current->right;
-        }
-        else if (current->data < decision || current->left != NULL)
-        {
-            if (current->left == NULL)
-            {
-                printf("\nNumber not in Maokai\n");
-                return;
-            }
-            current = current->left;
-        }
-        pos++;
-    }
-    printf("\nFound data in position %d\n", pos);
-}
-
-void free_all(NODE *root1)
-{
-    if (root1 != NULL)
-    {
-        free_all(root1->left);
-        free(root1);
-        free_all(root1->right);
-        nodeCounter--;
-    }
-}
-
-void fancyPrint(NODE *ptr, int space)
-{
-
-    if (ptr == NULL)
-        return;
-
-    space += 10;
-
-    fancyPrint(ptr->right, space);
-
-    printf("\n");
-    for (int i = 10; i < space; i++)
-        printf(" ");
-    printf("%d\n", ptr->data);
-
-    fancyPrint(ptr->left, space);
-}
-
-void printTree() // get values
-{
-    printf("\n Pre-Order: ");
-    preOrderPrint(root);
-    printf("\n In-Order: ");
-    inOrderPrint(root);
-    printf("\n Post-Order: ");
-    postOrderPrint(root);
-    printf("\n");
-}
-
-void inOrderPrint(NODE *root1)
-{
-    if (root1 != NULL)
-    {
-        inOrderPrint(root1->left);
-        printf("%d ", root1->data);
-        inOrderPrint(root1->right);
-    }
-}
-
-void preOrderPrint(NODE *root1)
-{
-    if(root1 != NULL){
-        printf("%d ", root1->data);
-        preOrderPrint(root1->left);
-        preOrderPrint(root1->right);
-    }
-}
-
-void postOrderPrint(NODE *root1)
-{
-    if (root1 != NULL){  
-        postOrderPrint(root1->left);
-        postOrderPrint(root1->right);
-        printf("%d ", root1->data);
-    }
-}
-
-void addRNJesus()
-{
-    int numbers[SIZEARR] = {0};
-    int index;
-
-    srand(time(NULL));
-
-    for (int i = 1; i <= SIZEARR; i++)
-    {
-        // rando
-        index = rand() % SIZEARR;
-
-        if (numbers[index] = 0)
-        {
-            numbers[index] = i;
-        }
-        else
-        {
-            i--;
+        }else if((*root)->num < value){
+            delete_Node(&(*root)->right, value);
+        }else{
+            delete_Node(&(*root)->left, value);
         }
     }
+}
+           
 
-    for (int i = 0; i < SIZEARR; i++)
-        addNode(numbers[i]);
+//printing nodes
+void print_Nodes_Prefix(NODE *root){
+    if(root == NULL){ return; }
+    printf("%d, ", root->num);
+    print_Nodes_Prefix(root->left);
+    print_Nodes_Prefix(root->right);
+}
+
+void print_Nodes_Infix(NODE *root){
+    if(root == NULL){ return; }
+    print_Nodes_Infix(root->left);
+    printf("%d, ", root->num);
+    print_Nodes_Infix(root->right);
+}
+
+void print_Nodes_Postfix(NODE *root){
+    if(root == NULL){ return; }
+    print_Nodes_Postfix(root->left);
+    print_Nodes_Postfix(root->right);
+    printf("%d, ", root->num);
+}
+
+
+void free_all(NODE *root){
+    if(root != NULL){
+        free_all(root->left);
+        free_all(root->right);
+        free(root);
+    }
 }
