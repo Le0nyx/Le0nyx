@@ -8,6 +8,7 @@ The diffrent Libraries shall be installed through the arduino IDE library manage
 */
 
 #include <LiquidCrystal.h>
+#include <TimeLib.h>
 #include <DHT.h>
 #define DHTPIN 7
 #define DHTTYPE DHT11
@@ -15,186 +16,33 @@ The diffrent Libraries shall be installed through the arduino IDE library manage
 DHT dht(DHTPIN, DHTTYPE);
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // RS, E, D4, D5, D6, D7
 
+
+const int left_button = 18;
+const int right_button = 19;
+
+volatile int current_display_mode = 0;
+long long timer_time = 0;
+unsigned long interrupt_last_pressed = 0;
+
+
 int lcdnewer;
-int treevar;
 int bootingseq;
+
+int days;
+int years;
+int months;
+
 unsigned long hours;
 unsigned long minutes;
 unsigned long seconds;
-unsigned long currentTime;
+
+unsigned long currentTime = 1722201035;
+
+unsigned long startUnixStamp = 0;
 
 
-
-void setup() {
-  pinMode(9, OUTPUT);
-  lcd.begin(16, 2);
-  // Set up the serial communication for debugging
-  Serial.begin(9600);
-  dht.begin();
-
-  unsigned long unixTimestamp = 0;
-  Serial.println("Enter Unix timestamp: ");
-  while (Serial.available() == 0) {
-   // Wait for user input
-  }
-
-  String inputString = Serial.readString(); // Read the entire input as a string
-  unixTimestamp = inputString.toInt(); // Convert the input string to unsigned long
-  Serial.print("Unix timestamp entered: ");
-  Serial.println(unixTimestamp);
-  Serial.println();
-
-  //this gets me the current time shit
-  currentTime = unixTimestamp + (millis() / 1000);
-  seconds = currentTime % 60;
-  minutes = (currentTime / 60) % 60;
-  hours = ((currentTime / 3600) + 2) % 24;
-  Serial.print(hours);
-  Serial.print(":");
-  Serial.print(minutes);
-  Serial.print(":");
-  Serial.print(seconds);
-  Serial.println();
-
-  lcdnewer = 0;
-  treevar = 1;
-  bootingseq = 0;
-}
-
-void loop() {
-
-/*
-  digitalWrite(9, HIGH); //testing the led
-  delay(1000);
-  digitalWrite(9, LOW);
-  delay(1000);
-*/
-
-  //add watersignal here for every 30 mins
-  if((minutes == 30 || minutes == 0) && seconds == 0){
-    digitalWrite(9, HIGH);
-  }
-
-  if((minutes == 30 || minutes == 0) && seconds == 1){
-    digitalWrite(9, LOW);
-  }
-
-  if((minutes == 30 || minutes == 0) && seconds == 2){
-    digitalWrite(9, HIGH);
-  }
-
-  if((minutes == 30 || minutes == 0) && seconds == 3){
-    digitalWrite(9, LOW);
-  }
-
-  // Calculate the current Unix timestamp
-  currentTime = currentTime + 1; // Increment the time by 1 second
-  seconds = currentTime % 60; // Calculate the updated seconds
-  minutes = (currentTime / 60) % 60; // Calculate the updated minutes
-  hours = ((currentTime / 3600) + 2) % 24; // Calculate the updated hours
-
-  // Reset the time to 00:00:00 if it reaches 24:00:00
-  if (hours >= 24) {
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
-    currentTime = 0;
-  }
-
-  // Display the time
-/* Testing in the terminal monitor
-  if (hours < 10) {
-    Serial.print('0');
-  }
-  Serial.print(hours);
-  Serial.print(':');
-
-  if (minutes < 10) {
-    Serial.print('0');
-  }
-  Serial.print(minutes);
-  Serial.print(':');
-
-  if (seconds < 10) {
-    Serial.print('0');
-  }
-  Serial.println(seconds);
-*/
-  // Delay for 1 second before updating the time
-
-  //prints the time
-  if(lcdnewer == 10){
-    lcd.clear();
-
-    if(hours < 10){
-      lcd.print("0");
-    }
-    lcd.print(hours);
-    lcd.print(":");
-
-    if(minutes < 10){
-      lcd.print("0");
-    }
-    lcd.print(minutes);
-    lcd.print(":");
-
-    if(seconds > 10){ 
-      lcd.print(seconds);
-
-    }else{
-      lcd.print("0");
-      lcd.print(seconds);
-    }
-
-
-    //temperature and humidity
-    lcd.setCursor(0, 1);
-    float temperature = dht.readTemperature();
-    //float humidity = dht.readHumidity();
-    lcd.print(temperature);
-    lcd.print("^C ");
-    //lcd.print(humidity);
-    //lcd.print("%");
-
-    //displaying
-    image1();
-    lcdnewer = lcdnewer -10;
-    //Serial.print("reached");
-  }
-
-  if(lcdnewer != 10){
-    //Serial.print(lcdnewer);
-    delay(1000);
-    lcdnewer++;
-  }
-
-//make the booting animation
-  if(bootingseq == 0){ //only gets done once
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print(lcdnewer*10);
-    lcd.print("% - 100%");
-    lcd.setCursor(0, 1);
-    lcd.print("I");
-
-    for(int i = 0;i<lcdnewer;i++){
-      lcd.print("#");
-    }
-
-    lcd.setCursor(11, 1);
-    lcd.print("I");
-
-    if(lcdnewer==9){
-      bootingseq = 1;
-    }
-  }
-
-} //end of void loop
-
-
-
-
-void image1(){ //animation stuff
+void image1() { 
+  //animation stuff
 
   //creating sun and moon
   byte image16[8] = {B01110, B11111, B11111, B11101, B01110, B00000, B00000, B00000};
@@ -224,75 +72,232 @@ void image1(){ //animation stuff
   lcd.createChar(3, image29); //grass2
 
   //treevar combinations 9-15 can be used
-  if(treevar==1){
-    lcd.setCursor(9, 1);
-    lcd.write(byte(2));
-    lcd.setCursor(10, 1);
-    lcd.write(byte(3));
-    lcd.setCursor(11, 1);
-    lcd.write(byte(3));
-    lcd.setCursor(12, 1);
-    lcd.write(byte(0));
-    lcd.setCursor(13, 1);
-    lcd.write(byte(2));
-    lcd.setCursor(14, 1);
-    lcd.write(byte(3));
-    lcd.setCursor(15, 1);
-    lcd.write(byte(2));
-  }
-
-  if(treevar==2){
-    lcd.setCursor(9, 1);
-    lcd.write(byte(3));
-    lcd.setCursor(10, 1);
-    lcd.write(byte(0));
-    lcd.setCursor(11, 1);
-    lcd.write(byte(1));
-    lcd.setCursor(12, 1);
-    lcd.write(byte(1));
-    lcd.setCursor(13, 1);
-    lcd.write(byte(0));
-    lcd.setCursor(14, 1);
-    lcd.write(byte(2));
-    lcd.setCursor(15, 1);
-    lcd.write(byte(1));
-  }
-
-  if(treevar==3){
-    lcd.setCursor(9, 1);
-    lcd.write(byte(0));
-    lcd.setCursor(10, 1);
-    lcd.write(byte(1));
-    lcd.setCursor(11, 1);
-    lcd.write(byte(2));
-    lcd.setCursor(12, 1);
-    lcd.write(byte(0));
-    lcd.setCursor(13, 1);
-    lcd.write(byte(0));
-    lcd.setCursor(14, 1);
-    lcd.write(byte(3));
-    lcd.setCursor(15, 1);
-    lcd.write(byte(1));
-  }
-
-  if(treevar==4){
-    lcd.setCursor(9, 1);
-    lcd.write(byte(2));
-    lcd.setCursor(10, 1);
-    lcd.write(byte(1));
-    lcd.setCursor(11, 1);
-    lcd.write(byte(3));
-    lcd.setCursor(12, 1);
-    lcd.write(byte(2));
-    lcd.setCursor(13, 1);
-    lcd.write(byte(0));
-    lcd.setCursor(14, 1);
-    lcd.write(byte(2));
-    lcd.setCursor(15, 1);
-    lcd.write(byte(3));
-
-    treevar = treevar-4;
-  }
-  treevar++;
+  lcd.setCursor(9, 1);
+  lcd.write(byte(random(0, 4)));
+  lcd.setCursor(10, 1);
+  lcd.write(byte(random(0, 4)));
+  lcd.setCursor(11, 1);
+  lcd.write(byte(random(0, 4)));
+  lcd.setCursor(12, 1);
+  lcd.write(byte(random(0, 4)));
+  lcd.setCursor(13, 1);
+  lcd.write(byte(random(0, 4)));
+  lcd.setCursor(14, 1);
+  lcd.write(byte(random(0, 4)));
+  lcd.setCursor(15, 1);
+  lcd.write(byte(random(0, 4)));
 }
+
+
+void change_display_mode(){
+  if((currentTime - interrupt_last_pressed) > 3){ //debounce the signal
+    current_display_mode = (current_display_mode + 1) % 3;
+    interrupt_last_pressed = currentTime;
+  }
+}
+
+void add_five(){
+  if((currentTime - interrupt_last_pressed) > 3){ //debounce the signal
+    timer_time = timer_time + 300;
+    interrupt_last_pressed = currentTime;
+  }
+}
+
+
+void setup() {
+  pinMode(9, OUTPUT); // LED light for water and if timer is over
+  
+  attachInterrupt(digitalPinToInterrupt(left_button), add_five, FALLING);
+  attachInterrupt(digitalPinToInterrupt(right_button), change_display_mode, FALLING);
+  
+  lcd.begin(16, 2);
+
+  // Set up the serial communication for debugging
+  Serial.begin(9600);
+  dht.begin();
+ 
+  lcdnewer = 0;
+  bootingseq = 0;
+
+  // timezone and summertime /winter
+  currentTime = currentTime + 3600;
+  currentTime = currentTime + 3600;
+
+  startUnixStamp = currentTime;
+}
+
+void loop() {
+  // Calculate the current Unix timestamp
+  //randomSeed(currentTime);
+  
+
+  seconds = second(currentTime);
+  minutes = minute(currentTime);
+  hours = hour(currentTime);
+
+  days = day(currentTime);
+  months = month(currentTime);
+  years = year(currentTime);
+
+  //add watersignal here for every 30 mins
+  if((minutes == 0) && seconds == 0){ digitalWrite(9, HIGH); }
+  if((minutes == 0) && seconds == 1){ digitalWrite(9, LOW); }
+  if((minutes == 0) && seconds == 2){ digitalWrite(9, HIGH); }
+  if((minutes == 0) && seconds == 3){ digitalWrite(9, LOW); }
+
+
+  if(current_display_mode == 0){
+    //prints the time
+    if(lcdnewer == 10){
+      lcd.clear();
+
+      if(hours < 10){
+        lcd.print("0");
+      }
+      lcd.print(hours);
+      lcd.print(":");
+
+      if(minutes < 10){
+        lcd.print("0");
+      }
+      lcd.print(minutes);
+      lcd.print(":");
+
+      if(seconds >= 10){ 
+        lcd.print(seconds);
+
+      }else{
+        lcd.print("0");
+        lcd.print(seconds);
+      }
+
+      //temperature and humidity
+      lcd.setCursor(0, 1);
+      float temperature = dht.readTemperature();
+      
+      lcd.print(temperature);
+      lcd.print("^C ");
+      //displaying
+      image1();
+      lcdnewer = 0;
+    }
+  }
+
+  if(current_display_mode == 1){
+    //prints humidity what day/month/year and uptime of arduino
+    float humidity = dht.readHumidity();
+
+    if(lcdnewer == 10){
+      lcd.clear();
+
+      if(days < 10){ lcd.print("0"); }
+      lcd.print(days);
+      lcd.print(":");
+      if(months < 10){ lcd.print("0"); }
+      lcd.print(months);
+      lcd.print(":");
+      lcd.print(years);
+
+      lcd.setCursor(0, 1);
+
+      
+      if(hour(currentTime - startUnixStamp) < 10){ lcd.print("0"); }
+      lcd.print(hour(currentTime - startUnixStamp));
+      lcd.print(":");
+      if(minute(currentTime - startUnixStamp) < 10){ lcd.print("0"); }
+      lcd.print(minute(currentTime - startUnixStamp));
+      lcd.print(":");
+      if(second(currentTime - startUnixStamp) < 10){ lcd.print("0"); }
+      lcd.print(second(currentTime - startUnixStamp));
+
+      lcd.print("  ");
+
+      lcd.print(humidity);
+      lcd.print("%");
+
+
+      if(hours < 19 && hours > 8){ //put here to make the sun
+        lcd.setCursor(15, 0);
+        lcd.write(byte(4));
+        
+      } else{ //put here that makes the moon
+        lcd.setCursor(15, 0);
+        lcd.write(byte(5));
+      }
+
+
+      lcdnewer = 0;
+    }
+  }
+
+
+  if(current_display_mode == 2){
+    if(minute(timer_time) < 1 && second(timer_time) < 10 && second(timer_time) > 0 ){
+      if (second(timer_time) % 2 == 0) { digitalWrite(9, LOW); }
+      else{ digitalWrite(9, HIGH); }
+    }
+    if(minute(timer_time) == 0 && second(timer_time) == 0){ digitalWrite(9, LOW); }
+
+    if(lcdnewer == 10){
+      lcd.clear();
+
+      lcd.print("Timer: ");
+      lcd.setCursor(0, 1);
+
+
+      if(hour(timer_time) < 10){ lcd.print("0"); }
+      lcd.print(hour(timer_time));
+      lcd.print(":");
+      if(minute(timer_time) < 10){ lcd.print("0"); }
+      lcd.print(minute(timer_time));
+      lcd.print(":");
+      if(second(timer_time) < 10){ lcd.print("0"); }
+      lcd.print(second(timer_time));
+
+      image1();
+
+      lcdnewer = 0;
+    }
+  }
+
+
+
+
+  if(lcdnewer != 10){
+    delay(1000);
+    currentTime = currentTime + 1; // Increment the time by 1 second
+    lcdnewer++;
+
+    if(timer_time <= 0){
+      timer_time = 0;
+    }else{
+      timer_time--;
+    }
+
+  }
+//make the booting animation
+  if(bootingseq == 0){ //only gets done once
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print(lcdnewer*10);
+    lcd.print("% - 100%");
+    lcd.setCursor(0, 1);
+    lcd.print("I");
+
+    for(int i = 0;i<lcdnewer;i++){
+      lcd.print("#");
+    }
+
+    lcd.setCursor(11, 1);
+    lcd.print("I");
+
+    if(lcdnewer==9){
+      bootingseq = 1;
+    }
+  }
+} //end of void loop
+
+
+
+
 
