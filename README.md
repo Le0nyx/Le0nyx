@@ -34,7 +34,8 @@ It includes code ranging from simpler exercises I began with in school to more c
 ## ⚙️ Projects
 I have been working on a lot of personal projects such as a selfmade Handheld Console with a RaspberryPi 5 and a Touchscreen and a small Website running in my local network so I can access it around my house. Also projects like a terminal with modifications in Python using Tkinter were fun for me to experiment around and get to experience in diffrent fields of coding and collect some experience. Also the projects we do in school were a lot of fun. 
 <br>
-As example I coded over a longer duration a Text-adventure Game. It is similar to a Soulslike Game and that took quite a bit of time to code, which was perfect to get some experience in bigger projects that need time and management and split the work up to be efficient.
+<br>
+An example is that I coded over a longer duration a Text-adventure Game. It is similar to a Soulslike Game and that took quite a bit of time to code, which was perfect to get some experience in bigger projects that need time and management and split the work up to be efficient.
 <br>
 <br>
 ### Extras
