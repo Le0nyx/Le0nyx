@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Stats Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>PC Stats Dashboard</h1>
+    <div id="stats">
+        <div class="stat" id="uptime">Uptime: Fetching...</div>
+        <div class="stat" id="memory">Memory: Fetching...</div>
+        <div class="stat" id="cpu-usage">CPU Usage: Fetching...</div>
+        <div class="stat" id="disk-usage">Disk Usage: Fetching...</div>
+        <div class="stat" id="network-usage">Network: Fetching...</div>
+    </div>
+
+    <div class="file-upload">
+        <h2>Upload a File</h2>
+        <form id="uploadForm" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" required />
+            <button type="submit">Upload</button>
+        </form>
+        <p id="uploadStatus"></p>
+    </div>
+
+    <script>
+        async function fetchStats() {
+            try {
+                const response = await fetch('/stats');
+                const data = await response.json();
+                document.getElementById('uptime').innerText = `Uptime: ${data.uptime}`;
+                document.getElementById('memory').innerText = `Memory: ${data.memory}`;
+                document.getElementById('cpu-usage').innerText = `CPU Usage: ${data.cpu_usage}%`;
+                document.getElementById('disk-usage').innerText = `Disk Usage: ${data.disk_usage}`;
+                document.getElementById('network-usage').innerText = `Network: ${data.network_usage}`;
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+        }
+
+        setInterval(fetchStats, 5000); // Update every 5 seconds
+        fetchStats();
+
+        const form = document.getElementById('uploadForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('fileInput');
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                const response = await fetch('/upload', { method: 'POST', body: formData });
+                const result = await response.text();
+                document.getElementById('uploadStatus').innerText = result;
+            } catch (error) {
+                document.getElementById('uploadStatus').innerText = 'Upload failed.';
+                console.error('Error uploading file:', error);
+            }
+        });
+    </script>
+</body>
+</html>
