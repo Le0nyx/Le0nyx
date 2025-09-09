@@ -47,6 +47,7 @@ I have been working on a lot of personal projects such as a selfmade Handheld Co
 An example is that I coded over a longer duration a Text-adventure Game. It is similar to a Soulslike Game and that took quite a bit of time to code, which was perfect to get some experience in bigger projects that need time and management and split the work up to be efficient.
 <br>
 <br>
+
 ### Extras
 - Please note that the Code isn't perfect and isn't 100% error free for all machines. 
 - The Code is mainly designed for Windows machines with gcc installed
