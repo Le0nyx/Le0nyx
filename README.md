@@ -36,9 +36,11 @@ This repository is my resume and a collection of smaller personal projects that 
 
 If you want here are some of my repos of projects that I did make public:
 
-- A Windows tray Application for quick access to other applications 
+- A Windows tray Application for quick access to other applications
+
 ![ScriptHub](https://github.com/Le0nyx/ScriptHub)
 
+<br>
 I have been working on a lot of personal projects such as a selfmade Handheld Console with a RaspberryPi 5 and a Touchscreen and a small Website running in my local network so I can access it around my house communicating with Sensors to display temperature and light and other readings on the website. Also projects like a terminal with modifications in Python using Tkinter were fun for me to experiment around and get to experience in diffrent fields of coding and collect some experience. Also the projects we do in school were a lot of fun. A lot of projects still need to be uploaded and finished.
 <br>
 <br>
