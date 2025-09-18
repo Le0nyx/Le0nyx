@@ -9,7 +9,7 @@
 - I like tinkering a lot with electronics, also in combination with 3D-printing
 - Currently working on diffrent small projects
 
-![[https://github.com/Le0nyx/Le0nyx/personal/z-OtherSmallExperiments/ProfileSnake.svg]]
+![GitHub Snake](./personal/z-OtherSmallExperiments/ProfileSnake.svg)
 
 
 ## 💻 How to download repository
