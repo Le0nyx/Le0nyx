@@ -42,7 +42,7 @@ If you want here are some of my repos of projects that I did make public:
 
 - Self Coded AI that completes Text
 
-[Self Coded AI](https://github.com/Le0nyx/simpleMind-AI)
+[simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
 
 
 <br>
