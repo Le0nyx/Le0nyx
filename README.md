@@ -12,22 +12,6 @@
 ![GitHub Snake](./personal/z-OtherSmallExperiments/ProfileSnake.svg)
 
 
-## 💻 How to download repository
-First see if git is installed and otherwise:
-
-Linux:
-```
-$ sudo apt install git-all
-```
-Windows and more Information for download:
-https://git-scm.com/downloads
-<br>
-
-Terminal:
-```
-git clone "https://github.com/Le0nyx/resume"
-```
-
 ## 📌 What is this repository about?
 This repository is my resume and a collection of smaller personal projects that I coded at home for fun and to make easier certain tasks, such as a menu that opens on boot for different scenarios, and Arduino code for automation as well as that controls a little self made clock on my desk and some One-Day projects that I made for getting to know a language or some functions.
 <br>
@@ -40,7 +24,7 @@ If you want here are some of my repos of projects that I did make public:
 
 [ScriptHub](https://github.com/Le0nyx/ScriptHub)
 
-- Self Coded AI that completes Text
+- Self Coded AI that I trained and tries to predict Text
 
 [simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
 
