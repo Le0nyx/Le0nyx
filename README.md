@@ -20,6 +20,10 @@ This repository is my resume and a collection of smaller personal projects that 
 
 If you want here are some of my repos of projects that I did make public:
 
+- A collection of Hackathon Projects
+
+[Hackathons](https://github.com/Le0nyx/Hackathons)
+
 - A Windows tray Application for quick access to other applications
 
 [ScriptHub](https://github.com/Le0nyx/ScriptHub)
