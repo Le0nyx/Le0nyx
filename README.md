@@ -42,6 +42,7 @@ If you want here are some of my repos of projects that I did make public:
 Other than taht I have been working on a lot of personal projects such as a selfmade Handheld Console with a RaspberryPi 5 and a Touchscreen and a small Website running in my local network so I can access it around my house communicating with Sensors to display temperature and light and other readings on the website. Also projects like a terminal with modifications in Python using Tkinter were fun for me to experiment around and get to experience in diffrent fields of coding and collect some experience. Also the projects we do in school were a lot of fun. A lot of projects still need to be uploaded and finished. 
 
 <br>
+<br>
 
 Other Projects also include a selfmade OS from scratch with a selfmade bootloader and Kernel to gather some experience in low level programming with assembler also and a programm that scrapes your PC for files from every folder so you can even back up old PDF files you might have forgotten where you saved them. But recently my main focus was on developing some hardware and tinkering with hardware.
 <br>
