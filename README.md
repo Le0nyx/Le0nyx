@@ -36,6 +36,12 @@ If you want here are some of my repos of projects that I did make public:
 
 [simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
 
+- Small DIY Lamp for healthier eyes at night
+
+[DIY-Lamp](https://github.com/Le0nyx/DIY-lamp)
+
+
+
 ## 💻 Future Projects
 
 <br>
