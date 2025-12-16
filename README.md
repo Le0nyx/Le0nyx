@@ -9,6 +9,31 @@
 - I like tinkering a lot with electronics, also in combination with 3D-printing
 - Currently working on diffrent small projects
 
+
+<br>
+<br>
+
+<div align="left">
+  <img src="https://skillicons.dev/icons?i=c" height="40" alt="c logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=cpp" height="40" alt="cpp logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=flutter" height="40" alt="flutter logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=java" height="40" alt="java logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=py" height="40" alt="python logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=mysql" height="40" alt="mysql logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=linux" height="40" alt="linux logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=unity" height="40" alt="unity logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=raspberrypi" height="40" alt="raspberrypi logo"  />
+</div>
+
+
 ![GitHub Snake](./personal/z-OtherSmallExperiments/ProfileSnake.svg)
 
 
