@@ -9,8 +9,6 @@
 - I like tinkering a lot with electronics, also in combination with 3D-printing
 - Currently working on diffrent small projects
 
-
-<br>
 <br>
 
 <div align="left">
