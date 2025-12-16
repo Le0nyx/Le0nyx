@@ -18,17 +18,21 @@
   <img width="11" />
   <img src="https://skillicons.dev/icons?i=cpp" height="40" alt="cpp logo"  />
   <img width="11" />
+  <img src="https://skillicons.dev/icons?i=cs" height="40" alt="cSharp logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=arduino" height="40" alt="arduino logo"  />
+  <img width="11" />
   <img src="https://skillicons.dev/icons?i=flutter" height="40" alt="flutter logo"  />
   <img width="11" />
   <img src="https://skillicons.dev/icons?i=java" height="40" alt="java logo"  />
   <img width="11" />
   <img src="https://skillicons.dev/icons?i=py" height="40" alt="python logo"  />
   <img width="11" />
+  <img src="https://skillicons.dev/icons?i=php" height="40" alt="php logo"  />
+  <img width="11" />
   <img src="https://skillicons.dev/icons?i=mysql" height="40" alt="mysql logo"  />
   <img width="11" />
   <img src="https://skillicons.dev/icons?i=linux" height="40" alt="linux logo"  />
-  <img width="11" />
-  <img src="https://skillicons.dev/icons?i=unity" height="40" alt="unity logo"  />
   <img width="11" />
   <img src="https://skillicons.dev/icons?i=raspberrypi" height="40" alt="raspberrypi logo"  />
 </div>
