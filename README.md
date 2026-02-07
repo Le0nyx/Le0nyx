@@ -59,6 +59,10 @@ If you want here are some of my repos of projects that I did make public:
 
 [ScriptHub](https://github.com/Le0nyx/ScriptHub)
 
+- Ollama Integration for Obsidian
+
+[OllamaIntegration](https://github.com/Le0nyx/obsidianOllama-Integration)
+
 - Self Coded AI that I trained and tries to predict Text
 
 [simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
