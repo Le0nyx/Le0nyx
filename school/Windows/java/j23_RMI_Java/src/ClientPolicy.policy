@@ -1,0 +1,18 @@
+grant codeBase "file:/C:/Users/leonm/Desktop/pcC/all-Code/5bt/TP/j03_RMI_Java/out/production/j03_RMI_Java/j03_RMI_Uebung2/" {
+    // allow client to connect to RMI registry on localhost
+    permission java.net.SocketPermission "127.0.0.1:1099", "connect,resolve";
+
+    // allow client to listen/accept/connect on the fixed callback port 20000
+    permission java.net.SocketPermission "127.0.0.1:20000", "listen,accept,connect,resolve";
+};
+
+// allow localhost ephemeral ports for RMI transport handlers (helps avoid other AccessControlExceptions)
+grant {
+    permission java.net.SocketPermission "127.0.0.1:1024-65535", "connect,accept,resolve,listen";
+};
+
+// keep debugger/IDE native dll permissions if you use IntelliJ debugger
+grant {
+   permission java.io.FilePermission "C:\\Users\\leonm\\AppData\\Local\\JetBrains\\Toolbox\\cache\\backup\\IDEA-U-242.22855.74-6996155551663277250\\bin\\breakgen64.dll", "read";
+   permission java.lang.RuntimePermission "loadLibrary.*";
+};

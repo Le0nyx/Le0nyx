@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pi Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+    <h1>Pi Dashboard</h1>
+</header>
+
+<main>
+<div class="top-row">
+    <section class="card-section column" id="devices-section">
+        <h2>Devices</h2>
+        <div class="device-grid" id="devices-list"></div>
+        <div class="form-inline">
+            <input type="text" id="device-name" placeholder="Name">
+            <input type="text" id="device-ip" placeholder="IP">
+            <button onclick="addDevice()">Add</button>
+        </div>
+    </section>
+
+    <section class="card-section column" id="sensors-section">
+        <h2>Sensors</h2>
+        <div class="sensor-grid" id="sensors-list"></div>
+    </section>
+</div>
+
+<section class="card-section" id="weather-section">
+    <h2>Weather</h2>
+    <div id="weather-container" class="weather-grid"></div>
+</section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Pi Dashboard</p>
+</footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+grant codeBase "file:/C:/Users/leonm/Desktop/pcC/all-Code/5bt/TP/j03_RMI_Java/out/production/j03_RMI_Java/j03_RMI_Uebung2/" {
+    // allow connecting back to the client's callback port
+    permission java.net.SocketPermission "127.0.0.1:20000", "connect";
+
+    // allow registry operations on localhost:1099
+    permission java.net.SocketPermission "127.0.0.1:1099", "connect,accept";
+};
+
+// Allow localhost ephemeral ports (needed by RMI transport handlers)
+grant {
+    permission java.net.SocketPermission "127.0.0.1:1024-65535", "accept,connect,resolve";
+};

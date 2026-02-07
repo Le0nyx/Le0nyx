@@ -1,0 +1,34 @@
+a)
+Das Interface `java.rmi.Remote` ist ein sogenanntes *Marker-Interface*,
+das selbst keine Methoden enthält. Es dient nur dazu, ein Interface als „
+remotefähig“ zu kennzeichnen. Das bedeutet, dass die Methoden, die in diesem
+Interface definiert sind, auch über das Netzwerk aufgerufen werden können.
+RMI erkennt dadurch, dass es sich um ein Objekt handelt, das aus einer anderen
+JVM erreichbar ist, und kümmert sich um die nötige Kommunikation und
+Fehlerbehandlung. Deshalb müssen alle Methoden in einem Remote-Interface außerdem
+`throws RemoteException` angeben, da bei der Netzwerkkommunikation Fehler
+auftreten können.
+
+b)
+In Aufgabe 2a hat der Server eine feste Methode `quadrat(long)`, die direkt das
+Quadrat einer Zahl berechnet. Der Client ruft diese Methode einfach auf.
+In Aufgabe 2b dagegen wird ein allgemeines Konzept mit sogenannten „Tasks“
+verwendet. Der Client schickt dabei ein Objekt zum Server, das eine bestimmte
+Aufgabe beschreibt, und der Server führt diese aus. So kann man mit derselben
+Server-Struktur viele verschiedene Aufgaben bearbeiten, ohne den Server-Code
+jedes Mal zu ändern. Der Vorteil von Aufgabe 2a ist die Einfachheit und Sicherheit,
+weil nur eine klar definierte Methode existiert. Der Nachteil ist die geringere
+Flexibilität. Aufgabe 2b ist dagegen flexibler, da der Server verschiedene
+Berechnungen ausführen kann, aber auch komplizierter und potenziell unsicherer,
+weil fremder Code auf dem Server ausgeführt wird.
+
+c)
+Ein Client kann mehrere Aufrufe gleichzeitig ausführen, wenn er mehrere Threads
+startet. Auch der Server kann mehrere Clients gleichzeitig bedienen, weil das
+RMI-System für jeden Aufruf automatisch einen eigenen Thread startet.
+Dadurch können mehrere Berechnungen parallel laufen. Man kann das leicht testen,
+indem man mehrere Client-Programme oder Threads gleichzeitig Aufrufe starten
+lässt und im Server Log-Ausgaben mit Zeitstempeln einbaut. Wenn sich die Zeiten
+überlappen, sieht man, dass die Aufrufe wirklich gleichzeitig bearbeitet werden.
+Wichtig ist dabei nur, dass der Server-Code thread-sicher geschrieben ist, falls
+er gemeinsame Daten verwendet.
