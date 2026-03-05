@@ -5,9 +5,9 @@
 - I am a student studying computer science
 - I live in northern Italy
 - I also Code in my freetime for fun
-- I can Code in C/C++, Python, Java and I work on some Flutter apps
+- I can Code in a variety of languages and currently I work on some Flutter apps
 - I like tinkering a lot with electronics, also in combination with 3D-printing
-- Currently working on diffrent small projects
+- Currently working on diffrent projects
 
 <br>
 
@@ -57,10 +57,6 @@ Project Raven is a flutter app coded by me and my biggest Project yet
 
 - [Project Raven](https://github.com/Le0nyx/Project-Raven)
 
-A collection of Hackathon Projects
-
-- [Hackathons](https://github.com/Le0nyx/Hackathons)
-
 A Windows tray Application for quick access to other applications
 
 - [ScriptHub](https://github.com/Le0nyx/ScriptHub)
@@ -69,24 +65,27 @@ Ollama Integration for Obsidian for better notes
 
 - [OllamaIntegration](https://github.com/Le0nyx/obsidianOllama-Integration)
 
+A github Backup Tool
+
+- [BackupWithGit](https://github.com/Le0nyx/simpleBackupWithGit)
+
 Self Coded AI that I trained and tries to predict Text like real AI do
 
 - [simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
+
+A collection of Hackathon Projects
+
+- [Hackathons](https://github.com/Le0nyx/Hackathons)
 
 Small DIY Lamp for healthier eyes at night
 
 - [DIY-Lamp](https://github.com/Le0nyx/DIY-lamp)
 
-A github Backup Tool
-
-- [BackupWithGit](https://github.com/Le0nyx/simpleBackupWithGit)
-
-
 
 ## 💻 Future Projects
 
 <br>
-Other than that I have been working on a lot of personal projects such as a selfmade Handheld Console with a RaspberryPi 5 and a Touchscreen and a small Website running in my local network so I can access it around my house communicating with Sensors to display temperature and light and other readings on the website. A lot of projects still need to be uploaded and finished. 
+Other than that I have been working on a lot of personal projects such as a selfmade Console with a RaspberryPi 5 for emulation, a buisnesscard that is a PCB, receiving weather data from a satellite and I have even been working a little bit on a selfmade OS. A lot of projects still need to be finished and uploaded 
 
 <br>
 <br>
