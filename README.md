@@ -56,31 +56,31 @@ If you want here are some of my repos of projects that I did make public:
 <br>
 <br>
 
-Project Raven is a flutter app coded by me and my biggest Project yet
+#### Project Raven is a flutter app coded by me and my biggest Project yet
 
 - [Project Raven](https://github.com/Le0nyx/Project-Raven)
 
-A Windows tray Application for quick access to other applications
+#### A Windows tray Application for quick access to other applications
 
 - [ScriptHub](https://github.com/Le0nyx/ScriptHub)
 
-Ollama Integration for Obsidian for better notes
+#### Ollama Integration for Obsidian for better notes
 
 - [OllamaIntegration](https://github.com/Le0nyx/obsidianOllama-Integration)
 
-A github Backup Tool
+#### A github Backup Tool
 
 - [BackupWithGit](https://github.com/Le0nyx/simpleBackupWithGit)
 
-Self Coded AI that I trained and tries to predict Text like real AI do
+#### Self Coded AI that I trained and tries to predict Text like real AI do
 
 - [simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
 
-A collection of Hackathon Projects
+#### A collection of Hackathon Projects
 
 - [Hackathons](https://github.com/Le0nyx/Hackathons)
 
-Small DIY Lamp for healthier eyes at night
+#### Small DIY Lamp for healthier eyes at night
 
 - [DIY-Lamp](https://github.com/Le0nyx/DIY-lamp)
 
