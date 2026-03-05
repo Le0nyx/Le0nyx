@@ -52,7 +52,8 @@ This repository is my resume and a collection of smaller personal projects that 
 ## ⚙️ Projects
 
 If you want here are some of my repos of projects that I did make public:
-
+<br>
+<br>
 Project Raven is a flutter app coded by me and my biggest Project yet
 
 - [Project Raven](https://github.com/Le0nyx/Project-Raven)
