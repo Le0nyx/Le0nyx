@@ -20,6 +20,12 @@
   <img width="11" />
   <img src="https://skillicons.dev/icons?i=arduino" height="40" alt="arduino logo"  />
   <img width="11" />
+  <img src="https://skillicons.dev/icons?i=docker" height="40" alt="docker logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=js" height="40" alt="JavaScript logo"  />
+  <img width="11" />
+  <img src="https://skillicons.dev/icons?i=unity" height="40" alt="unity logo"  />
+  <img width="11" />
   <img src="https://skillicons.dev/icons?i=raspberrypi" height="40" alt="raspberrypi logo"  />
   <img width="11" />
   <img src="https://skillicons.dev/icons?i=linux" height="40" alt="linux logo"  />
@@ -47,33 +53,33 @@ This repository is my resume and a collection of smaller personal projects that 
 
 If you want here are some of my repos of projects that I did make public:
 
-- Project Raven is a flutter app coded by me and my biggest Project yet
+Project Raven is a flutter app coded by me and my biggest Project yet
 
-[Project Raven](https://github.com/Le0nyx/Project-Raven)
+- [Project Raven](https://github.com/Le0nyx/Project-Raven)
 
-- A collection of Hackathon Projects
+A collection of Hackathon Projects
 
-[Hackathons](https://github.com/Le0nyx/Hackathons)
+- [Hackathons](https://github.com/Le0nyx/Hackathons)
 
-- A Windows tray Application for quick access to other applications
+A Windows tray Application for quick access to other applications
 
-[ScriptHub](https://github.com/Le0nyx/ScriptHub)
+- [ScriptHub](https://github.com/Le0nyx/ScriptHub)
 
-- Ollama Integration for Obsidian
+Ollama Integration for Obsidian for better notes
 
-[OllamaIntegration](https://github.com/Le0nyx/obsidianOllama-Integration)
+- [OllamaIntegration](https://github.com/Le0nyx/obsidianOllama-Integration)
 
-- Self Coded AI that I trained and tries to predict Text
+Self Coded AI that I trained and tries to predict Text like real AI do
 
-[simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
+- [simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
 
-- Small DIY Lamp for healthier eyes at night
+Small DIY Lamp for healthier eyes at night
 
-[DIY-Lamp](https://github.com/Le0nyx/DIY-lamp)
+- [DIY-Lamp](https://github.com/Le0nyx/DIY-lamp)
 
-- A github Backup Tool
+A github Backup Tool
 
-[BackupWithGit](https://github.com/Le0nyx/simpleBackupWithGit)
+- [BackupWithGit](https://github.com/Le0nyx/simpleBackupWithGit)
 
 
 
