@@ -55,7 +55,6 @@ If you want here are some of my repos of projects that I did make public:
 
 <br>
 <br>
-<br>
 
 Project Raven is a flutter app coded by me and my biggest Project yet
 
@@ -85,6 +84,8 @@ Small DIY Lamp for healthier eyes at night
 
 - [DIY-Lamp](https://github.com/Le0nyx/DIY-lamp)
 
+<br>
+<br>
 
 ## 💻 Future Projects
 
