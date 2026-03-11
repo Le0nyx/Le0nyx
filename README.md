@@ -46,7 +46,7 @@
 
 
 ## 📌 What is this repository about?
-This repository is my resume and a collection of smaller personal projects that I coded at home for fun and to make easier certain tasks, such as a menu that opens on boot for different scenarios, and Arduino code for automation as well as that controls a little self made clock on my desk and some One-Day projects that I made for getting to know a language or some functions. Please also check out my biggest Project yet, called [Project Raven](https://github.com/Le0nyx/Project-Raven).
+This repository is my resume and a collection of smaller personal projects that I coded at home for fun and to make easier certain tasks, such as a menu that opens on boot for different scenarios, and Arduino code for automation as well as that controls a little self made clock on my desk and some One-Day projects that I made for getting to know a language or some functions. Please also check out my biggest Project yet, called [Project Raven](https://github.com/Le0nyx/Project-Raven) or [Mobile Ollama](https://github.com/Le0nyx/MobileOllama).
 <br>
 <br>
 ## ⚙️ Projects
@@ -58,6 +58,10 @@ If you want here are some of my repos of projects that I did make public:
 #### Project Raven is a flutter app coded by me and my biggest Project yet
 
 - [Project Raven](https://github.com/Le0nyx/Project-Raven)
+
+#### AI chatting app similar to ChatGPT, but without any unneccesarities
+
+- [Mobile Ollama](https://github.com/Le0nyx/MobileOllama)
 
 #### A Windows tray Application for quick access to other applications
 
