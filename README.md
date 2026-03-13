@@ -52,9 +52,7 @@ This repository is my resume and a collection of smaller personal projects that 
 ## ⚙️ Projects
 
 If you want here are some of my repos of projects that I did make public:
-
 <br>
-
 #### Project Raven is a flutter app coded by me and my biggest Project yet
 
 - [Project Raven](https://github.com/Le0nyx/Project-Raven)
@@ -88,21 +86,4 @@ If you want here are some of my repos of projects that I did make public:
 - [DIY-Lamp](https://github.com/Le0nyx/DIY-lamp)
 
 <br>
-<br>
 
-## 💻 Future Projects
-
-<br>
-Other than that I have been working on a lot of personal projects such as a selfmade Console with a RaspberryPi 5 for emulation, a buisnesscard that is a PCB, receiving weather data from a satellite and I have even been working a little bit on a selfmade OS. A lot of projects still need to be finished and uploaded 
-
-<br>
-<br>
-
-Other Projects also include a selfmade OS from scratch with a selfmade bootloader and Kernel to gather some experience in low level programming with assembler. But recently my main focus was on developing some hardware and tinkering with hardware.
-<br>
-<br>
-
-### Extras
-- Please note that the Code isn't perfect and isn't 100% error free for all machines. 
-- The projects have been made for personal use and as so aren't as easy to just deploy on any machine easily
-- Some projects may require a better PC or a GPU to have better functionality and performance
