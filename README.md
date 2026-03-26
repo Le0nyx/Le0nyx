@@ -8,37 +8,40 @@
 - I can Code in a variety of languages and currently I work on some Flutter apps
 - I like tinkering a lot with electronics, also in combination with 3D-printing
 - Currently working on diffrent projects
+<br>
+
+#### Looking for a fun way to get to know me better?  Try this [link](https://le0nyx.github.io/Le0nyx/)
 
 <br>
 
 <div align="left">
-  <img src="https://skillicons.dev/icons?i=c" height="40" alt="c logo"  />
+  <img src="./docs/assets/skills/c.svg" height="40" alt="c logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=cpp" height="40" alt="cpp logo"  />
+  <img src="./docs/assets/skills/cpp.svg" height="40" alt="cpp logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=cs" height="40" alt="cSharp logo"  />
+  <img src="./docs/assets/skills/cs.svg" height="40" alt="cSharp logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=arduino" height="40" alt="arduino logo"  />
+  <img src="./docs/assets/skills/arduino.svg" height="40" alt="arduino logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=docker" height="40" alt="docker logo"  />
+  <img src="./docs/assets/skills/docker.svg" height="40" alt="docker logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=js" height="40" alt="JavaScript logo"  />
+  <img src="./docs/assets/skills/js.svg" height="40" alt="JavaScript logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=unity" height="40" alt="unity logo"  />
+  <img src="./docs/assets/skills/unity.svg" height="40" alt="unity logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=raspberrypi" height="40" alt="raspberrypi logo"  />
+  <img src="./docs/assets/skills/raspberrypi.svg" height="40" alt="raspberrypi logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=linux" height="40" alt="linux logo"  />
+  <img src="./docs/assets/skills/linux.svg" height="40" alt="linux logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=flutter" height="40" alt="flutter logo"  />
+  <img src="./docs/assets/skills/flutter.svg" height="40" alt="flutter logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=java" height="40" alt="java logo"  />
+  <img src="./docs/assets/skills/java.svg" height="40" alt="java logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=py" height="40" alt="python logo"  />
+  <img src="./docs/assets/skills/py.svg" height="40" alt="python logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=php" height="40" alt="php logo"  />
+  <img src="./docs/assets/skills/php.svg" height="40" alt="php logo"  />
   <img width="11" />
-  <img src="https://skillicons.dev/icons?i=mysql" height="40" alt="mysql logo"  />
+  <img src="./docs/assets/skills/mysql.svg" height="40" alt="mysql logo"  />
 </div>
 
 
