@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="explosion face">
+  <circle cx="12" cy="12" r="9" fill="#ffb36b" stroke="#8a4f1a" stroke-width="1.3"/>
+  <path d="M7.2 8.8l2 2m0-2l-2 2" stroke="#252525" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M14.8 8.8l2 2m0-2l-2 2" stroke="#252525" stroke-width="1.4" stroke-linecap="round"/>
+  <ellipse cx="12" cy="15.4" rx="2.1" ry="1.4" fill="#252525"/>
+</svg>

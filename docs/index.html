@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leonyx resume</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="portfolio.css">
 </head>
@@ -18,7 +19,7 @@
     <div id="hint-text">click the icons to explore</div>
   </div>
 
-  <a id="desktop-label" href="https://www.sharyap.com" target="_blank" style="cursor: pointer; text-decoration: none;">inspired by sharyap.com</a>
+  <a id="desktop-label" href="https://www.sharyap.com" target="_blank" rel="noopener noreferrer">inspired by sharyap.com</a>
 </div>
 
 <!-- TASKBAR -->
@@ -35,6 +36,17 @@
 <!-- WINDOWS -->
 <div id="windows-root"></div>
 
-<script src="portfolio.js"></script>
+<script>
+  (function loadApp() {
+    var script = document.createElement('script');
+    if (window.location.protocol === 'file:') {
+      script.src = 'src/main.bundle.js';
+    } else {
+      script.type = 'module';
+      script.src = 'src/main.js';
+    }
+    document.body.appendChild(script);
+  })();
+</script>
 </body>
 </html>

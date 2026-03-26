@@ -1,6 +1,6 @@
 :root {
+  --taskbar-height: 52px;
   --bg: #e8e2d9;
-  --bg2: #d9d2c7;
   --surface: rgba(255,255,255,0.75);
   --surface-solid: #f5f1eb;
   --border: rgba(0,0,0,0.12);
@@ -18,11 +18,9 @@
   --titlebar: rgba(220,213,203,0.9);
   --shadow: 0 8px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
   --icon-bg: rgba(255,255,255,0.6);
-  --noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
 }
 [data-theme="dark"] {
   --bg: #1a1612;
-  --bg2: #231e19;
   --surface: rgba(40,33,26,0.88);
   --surface-solid: #2a2318;
   --border: rgba(255,255,255,0.1);
@@ -48,7 +46,7 @@ body {
   font-family: 'DM Mono', monospace;
   background-color: var(--bg);
   color: var(--text);
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   user-select: none;
   cursor: default;
@@ -58,7 +56,7 @@ body {
 #desktop {
   position: fixed;
   inset: 0;
-  bottom: 52px;
+  bottom: var(--taskbar-height);
   background-color: var(--bg);
   background-image:
     radial-gradient(ellipse 80% 60% at 20% 80%, rgba(196,98,45,0.12) 0%, transparent 60%),
@@ -125,13 +123,22 @@ body {
   line-height: 1.3;
 }
 
+.desktop-icon-spacer {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.desktop-icon-dino {
+  margin-top: 18px;
+}
+
 /* Taskbar */
 #taskbar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 52px;
+  height: var(--taskbar-height);
   background: var(--taskbar-bg);
   backdrop-filter: blur(20px) saturate(1.5);
   -webkit-backdrop-filter: blur(20px) saturate(1.5);
@@ -206,6 +213,8 @@ body {
   position: absolute;
   min-width: 320px;
   min-height: 200px;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - var(--taskbar-height) - 24px);
   background: var(--surface);
   backdrop-filter: blur(24px) saturate(1.8);
   -webkit-backdrop-filter: blur(24px) saturate(1.8);
@@ -376,14 +385,6 @@ body {
   color: var(--text-muted);
   letter-spacing: 0.03em;
 }
-.tag.accent { background: rgba(196,98,45,0.12); border-color: rgba(196,98,45,0.25); color: var(--accent); }
-.tag.accent2 { background: rgba(74,124,89,0.12); border-color: rgba(74,124,89,0.25); color: var(--accent2); }
-.tag.accent3 { background: rgba(107,79,138,0.12); border-color: rgba(107,79,138,0.25); color: var(--accent3); }
-.tag.accent4 { background: rgba(217,122,62,0.12); border-color: rgba(217,122,62,0.25); color: var(--accent4); }
-.tag.accent5 { background: rgba(43,143,163,0.12); border-color: rgba(43,143,163,0.25); color: var(--accent5); }
-.tag.accent6 { background: rgba(201,161,66,0.12); border-color: rgba(201,161,66,0.25); color: var(--accent6); }
-.tag.accent7 { background: rgba(90,79,165,0.12); border-color: rgba(90,79,165,0.25); color: var(--accent7); }
-.tag.accent8 { background: rgba(168,94,126,0.12); border-color: rgba(168,94,126,0.25); color: var(--accent8); }
 
 /* GitHub window */
 .github-card {
@@ -505,14 +506,15 @@ body {
   height: 16px;
   object-fit: contain;
 }
-.skill-icon-pill.accent { background: rgba(196,98,45,0.12); border-color: rgba(196,98,45,0.25); color: var(--accent); }
-.skill-icon-pill.accent2 { background: rgba(74,124,89,0.12); border-color: rgba(74,124,89,0.25); color: var(--accent2); }
-.skill-icon-pill.accent3 { background: rgba(107,79,138,0.12); border-color: rgba(107,79,138,0.25); color: var(--accent3); }
-.skill-icon-pill.accent4 { background: rgba(217,122,62,0.12); border-color: rgba(217,122,62,0.25); color: var(--accent4); }
-.skill-icon-pill.accent5 { background: rgba(43,143,163,0.12); border-color: rgba(43,143,163,0.25); color: var(--accent5); }
-.skill-icon-pill.accent6 { background: rgba(201,161,66,0.12); border-color: rgba(201,161,66,0.25); color: var(--accent6); }
-.skill-icon-pill.accent7 { background: rgba(90,79,165,0.12); border-color: rgba(90,79,165,0.25); color: var(--accent7); }
-.skill-icon-pill.accent8 { background: rgba(168,94,126,0.12); border-color: rgba(168,94,126,0.25); color: var(--accent8); }
+
+:is(.tag, .skill-icon-pill).accent { background: rgba(196,98,45,0.12); border-color: rgba(196,98,45,0.25); color: var(--accent); }
+:is(.tag, .skill-icon-pill).accent2 { background: rgba(74,124,89,0.12); border-color: rgba(74,124,89,0.25); color: var(--accent2); }
+:is(.tag, .skill-icon-pill).accent3 { background: rgba(107,79,138,0.12); border-color: rgba(107,79,138,0.25); color: var(--accent3); }
+:is(.tag, .skill-icon-pill).accent4 { background: rgba(217,122,62,0.12); border-color: rgba(217,122,62,0.25); color: var(--accent4); }
+:is(.tag, .skill-icon-pill).accent5 { background: rgba(43,143,163,0.12); border-color: rgba(43,143,163,0.25); color: var(--accent5); }
+:is(.tag, .skill-icon-pill).accent6 { background: rgba(201,161,66,0.12); border-color: rgba(201,161,66,0.25); color: var(--accent6); }
+:is(.tag, .skill-icon-pill).accent7 { background: rgba(90,79,165,0.12); border-color: rgba(90,79,165,0.25); color: var(--accent7); }
+:is(.tag, .skill-icon-pill).accent8 { background: rgba(168,94,126,0.12); border-color: rgba(168,94,126,0.25); color: var(--accent8); }
 .skill-bar-row {
   display: flex;
   align-items: center;
@@ -581,6 +583,12 @@ body {
   color: var(--text-muted);
   opacity: 0.5;
   z-index: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#desktop-label:hover {
+  opacity: 0.72;
 }
 
 /* Welcome hint */
@@ -606,7 +614,7 @@ body {
 /* Notification toast */
 #toast {
   position: fixed;
-  bottom: 68px;
+  bottom: calc(var(--taskbar-height) + 16px);
   right: 16px;
   background: var(--surface-solid);
   border: 1px solid var(--border);
@@ -623,3 +631,469 @@ body {
   pointer-events: none;
 }
 #toast.show { opacity: 1; transform: translateY(0); }
+
+/* Dino window */
+.dino-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.dino-score {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--accent2);
+  border: 1px solid var(--border);
+  background: var(--icon-bg);
+  border-radius: 999px;
+  padding: 7px 12px;
+  letter-spacing: 0.04em;
+}
+
+.dino-mobile-note {
+  display: none;
+  border: 1px solid rgba(196,98,45,0.28);
+  background: rgba(196,98,45,0.12);
+  color: var(--accent);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.dino-stage-wrap {
+  width: 100%;
+  height: clamp(240px, 46vh, 380px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fafafa;
+  overflow: hidden;
+}
+
+#dino-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dino-controls {
+  margin-top: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 0.02em;
+}
+
+/* Minesweeper window */
+.ms-shell {
+  --ms-cell-size: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ms-reset {
+  min-height: 42px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #ece8df, #d4cfbf);
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  color: #3c352b;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+}
+
+.ms-reset-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.ms-reset-label {
+  white-space: nowrap;
+}
+
+.ms-reset:active {
+  transform: translateY(1px);
+  box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.ms-hud-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #c9c4b4;
+  border: 1px solid #8b877b;
+  padding: 6px;
+}
+
+.ms-counter {
+  min-width: 86px;
+  font-size: 12px;
+  color: #f44;
+  background: #160d0d;
+  border: 1px solid #877f72;
+  border-top-color: #786f61;
+  border-left-color: #786f61;
+  padding: 6px 8px;
+  font-family: 'DM Mono', monospace;
+}
+
+.ms-counter-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: -2px;
+}
+
+.ms-difficulty-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 6px;
+}
+
+.ms-difficulty-btn,
+.ms-flag-mode {
+  border: 1px solid #8d877b;
+  background: linear-gradient(180deg, #ece8df, #d4cfbf);
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 rgba(0, 0, 0, 0.2);
+  color: #413a30;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.ms-button-icon {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: -2px;
+}
+
+.ms-difficulty-btn:active,
+.ms-difficulty-btn.active,
+.ms-flag-mode:active,
+.ms-flag-mode.active {
+  box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(1px);
+}
+
+.ms-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ms-selected-difficulty {
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
+.ms-board-wrap {
+  border: 1px solid #8a8478;
+  background: #c9c4b4;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.7), inset -2px -2px 0 rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  width: fit-content;
+  max-width: 100%;
+  align-self: center;
+  margin-inline: auto;
+  overflow: auto;
+  max-height: 52vh;
+}
+
+.ms-board {
+  display: grid;
+  gap: 0;
+  width: fit-content;
+}
+
+.ms-cell {
+  width: var(--ms-cell-size);
+  height: var(--ms-cell-size);
+  border: 1px solid #8f8a7f;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  border-right-color: #7f7b71;
+  border-bottom-color: #7f7b71;
+  background: #d5d0c2;
+  color: #1a1612;
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ms-cell-icon {
+  width: calc(var(--ms-cell-size) * 0.58);
+  height: calc(var(--ms-cell-size) * 0.58);
+  display: block;
+}
+
+.ms-cell.revealed {
+  border: 1px solid #9a9386;
+  background: #bfb8a6;
+}
+
+.ms-cell.flagged {
+  color: #c22;
+}
+
+.ms-cell.mine {
+  background: #d5b0a8;
+}
+
+.ms-cell.exploded {
+  background: #e06753;
+}
+
+.ms-num {
+  line-height: 1;
+}
+
+.ms-num-1 { color: #1f4db8; }
+.ms-num-2 { color: #2f7a2f; }
+.ms-num-3 { color: #a82222; }
+.ms-num-4 { color: #2f2b84; }
+.ms-num-5 { color: #7d2a2a; }
+.ms-num-6 { color: #2f7a7a; }
+.ms-num-7 { color: #1f1f1f; }
+.ms-num-8 { color: #666; }
+
+.ms-mobile-note {
+  display: none;
+  border: 1px solid rgba(196,98,45,0.28);
+  background: rgba(196,98,45,0.12);
+  color: var(--accent);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --taskbar-height: 46px;
+  }
+
+  #desktop {
+    overflow: auto;
+  }
+
+  #desktop::before {
+    background-size: 28px 28px;
+  }
+
+  #icon-grid {
+    top: 12px;
+    left: 12px;
+    gap: 10px;
+  }
+
+  .desktop-icon {
+    width: 68px;
+    padding: 6px 4px;
+    gap: 4px;
+  }
+
+  .icon-emoji {
+    font-size: 24px;
+  }
+
+  .icon-label {
+    font-size: 9px;
+  }
+
+  .desktop-icon-spacer {
+    min-height: 46px;
+  }
+
+  .desktop-icon-dino {
+    margin-top: 10px;
+  }
+
+  #taskbar {
+    padding: 0 8px;
+    gap: 6px;
+  }
+
+  .taskbar-btn {
+    max-width: 40px;
+    padding: 0 8px;
+    justify-content: center;
+  }
+
+  .taskbar-btn .tb-label {
+    display: none;
+  }
+
+  #taskbar-clock {
+    min-width: 56px;
+    font-size: 10px;
+  }
+
+  #darkmode-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  #windows-root {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: calc(var(--taskbar-height) + 8px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    pointer-events: none;
+    z-index: 200;
+  }
+
+  .window {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: min(74vh, 620px) !important;
+    min-width: 0;
+    min-height: 220px;
+    max-width: 100%;
+    max-height: none;
+    margin-top: 0;
+    pointer-events: auto;
+    border-radius: 12px;
+  }
+
+  .window-body {
+    padding: 16px;
+  }
+
+  .titlebar {
+    height: 38px;
+    cursor: default;
+  }
+
+  .titlebar:active {
+    cursor: default;
+  }
+
+  .resize-handle {
+    display: none;
+  }
+
+  .win-h1 {
+    font-size: clamp(22px, 7vw, 28px);
+  }
+
+  .win-h2 {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .win-h3 {
+    font-size: 9px;
+    margin: 14px 0 6px;
+  }
+
+  .win-p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .skill-name {
+    width: 88px;
+    font-size: 10px;
+  }
+
+  #desktop-label,
+  #hint {
+    display: none;
+  }
+
+  #toast {
+    left: 8px;
+    right: 8px;
+    bottom: calc(var(--taskbar-height) + 8px);
+    text-align: center;
+  }
+
+  .dino-mobile-note {
+    display: block;
+  }
+
+  .dino-stage-wrap,
+  .dino-controls,
+  .dino-score {
+    display: none;
+  }
+
+  .ms-shell {
+    --ms-cell-size: 24px;
+  }
+
+  .ms-hud-row,
+  .ms-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .ms-counter {
+    min-width: 76px;
+    font-size: 11px;
+    padding: 5px 7px;
+  }
+
+  .ms-difficulty-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .ms-difficulty-btn,
+  .ms-flag-mode {
+    font-size: 9px;
+    padding: 6px;
+  }
+
+  .ms-board-wrap {
+    max-height: 48vh;
+  }
+
+  .ms-mobile-note {
+    display: block;
+  }
+
+  .ms-reset,
+  .ms-hud-row,
+  .ms-toolbar,
+  .ms-board-wrap {
+    display: none;
+  }
+}
