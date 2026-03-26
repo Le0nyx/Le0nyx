@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <title>Test Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leonyx resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
-  <h1>It works!</h1>
+
+<div id="desktop">
+  <div id="icon-grid"></div>
+
+  <div id="hint">
+    <div id="hint-emoji">👆</div>
+    <div id="hint-text">click the icons to explore</div>
+  </div>
+
+  <a id="desktop-label" href="https://www.sharyap.com" target="_blank" style="cursor: pointer; text-decoration: none;">inspired by sharyap.com</a>
+</div>
+
+<!-- TASKBAR -->
+<div id="taskbar">
+  <div id="taskbar-left"></div>
+  <div class="status-dot"></div>
+  <div id="darkmode-btn" onclick="toggleDark()" title="Toggle dark mode">🌙</div>
+  <div id="taskbar-clock">00:00</div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- WINDOWS -->
+<div id="windows-root"></div>
+
+<script src="portfolio.js"></script>
 </body>
 </html>
