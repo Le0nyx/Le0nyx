@@ -1,9 +1,18 @@
-import { TASKBAR_HEIGHT, MOBILE_BREAKPOINT } from '../config.js';
+import { TASKBAR_HEIGHT } from '../config.js';
 import { clampWindowToViewport } from './styles.js';
 import { focusWindow } from './windows.js';
 
 function isMobileViewport() {
-  return window.innerWidth <= MOBILE_BREAKPOINT;
+  // Check if device has touch capability and small width
+  // Avoid false positives from resized desktop browsers
+  const isTouchDevice = () => {
+    return (
+      (navigator.maxTouchPoints > 0) ||
+      (navigator.msMaxTouchPoints > 0) ||
+      window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    );
+  };
+  return window.innerWidth <= 768 && isTouchDevice();
 }
 
 export function initializeWindowInteractions() {

@@ -1,5 +1,4 @@
 // Configuration constants
-export const MOBILE_BREAKPOINT = 768;
 export const TASKBAR_HEIGHT = 52;
 
 // Dino game constants
@@ -10,4 +9,4 @@ export const DINO_INITIAL_SPEED = 6.2;
 export const DINO_MIN_SPAWN_GAP = 270;
 export const PTERODACTYL_SPAWN_THRESHOLD = 8.6;
 export const PTERODACTYL_SPAWN_SCORE_THRESHOLD = 110;
-export const DESKTOP_ICON_ORDER = ['about', 'work', 'skills', 'qa', 'github', '__spacer__', '__spacer__', 'dino', 'minesweeper'];
+export const DESKTOP_ICON_ORDER = ['about', 'work', 'skills', 'qa', 'github', '__spacer__', 'dino', 'minesweeper'];

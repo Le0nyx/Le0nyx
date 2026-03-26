@@ -308,7 +308,6 @@
   };
 
   // src/config.js
-  var MOBILE_BREAKPOINT = 768;
   var TASKBAR_HEIGHT = 52;
   var DINO_SPRITE_URL = "assets/dino/100-offline-sprite.png";
   var DINO_GRAVITY = 1.02;
@@ -317,7 +316,7 @@
   var DINO_MIN_SPAWN_GAP = 270;
   var PTERODACTYL_SPAWN_THRESHOLD = 8.6;
   var PTERODACTYL_SPAWN_SCORE_THRESHOLD = 110;
-  var DESKTOP_ICON_ORDER = ["about", "work", "skills", "qa", "github", "__spacer__", "__spacer__", "dino", "minesweeper"];
+  var DESKTOP_ICON_ORDER = ["about", "work", "skills", "qa", "github", "__spacer__", "dino", "minesweeper"];
 
   // src/ui/rendering.js
   function tagToneClass(tag) {
@@ -603,8 +602,14 @@
   };
 
   // src/ui/styles.js
+  function isMobileViewport() {
+    const isTouchDevice = () => {
+      return navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    };
+    return window.innerWidth <= 768 && isTouchDevice();
+  }
   function clampWindowToViewport(win) {
-    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+    const isMobile = isMobileViewport();
     if (!win || isMobile) return;
     const maxWidth = Math.max(320, window.innerWidth - 24);
     const maxHeight = Math.max(240, window.innerHeight - TASKBAR_HEIGHT - 24);
@@ -882,12 +887,15 @@
   }
 
   // src/game/input.js
-  function isMobileViewport() {
-    return window.innerWidth <= MOBILE_BREAKPOINT;
+  function isMobileViewport2() {
+    const isTouchDevice = () => {
+      return navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    };
+    return window.innerWidth <= 768 && isTouchDevice();
   }
   function initializeDinoInput(resetGameFn) {
     window.addEventListener("keydown", (e) => {
-      if (uiState.windowStates.dino !== "open" || isMobileViewport()) return;
+      if (uiState.windowStates.dino !== "open" || isMobileViewport2()) return;
       const key = e.key.toLowerCase();
       if ([" ", "arrowup", "w", "arrowdown", "s", "r"].includes(key)) {
         e.preventDefault();
@@ -906,14 +914,14 @@
       }
     });
     window.addEventListener("keyup", (e) => {
-      if (uiState.windowStates.dino !== "open" || isMobileViewport()) return;
+      if (uiState.windowStates.dino !== "open" || isMobileViewport2()) return;
       const key = e.key.toLowerCase();
       if (key === "arrowdown" || key === "s") {
         dinoState.ducking = false;
       }
     });
     window.addEventListener("resize", () => {
-      if (uiState.windowStates.dino === "open" && !isMobileViewport()) {
+      if (uiState.windowStates.dino === "open" && !isMobileViewport2()) {
         ensureDinoCanvasSize();
       }
     });
@@ -941,7 +949,7 @@
     }));
   }
   function startDinoGame() {
-    if (isMobileViewport()) return;
+    if (isMobileViewport2()) return;
     ensureDinoSpriteLoaded();
     const sizeInfo = ensureDinoCanvasSize();
     if (!sizeInfo) return;
@@ -1045,8 +1053,11 @@
     faceWin: "assets/minesweeper/face-win.svg",
     faceBoom: "assets/minesweeper/face-boom.svg"
   };
-  function isMobileViewport2() {
-    return window.innerWidth <= MOBILE_BREAKPOINT;
+  function isMobileViewport3() {
+    const isTouchDevice = () => {
+      return navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    };
+    return window.innerWidth <= 768 && isTouchDevice();
   }
   function getUi() {
     return {
@@ -1366,7 +1377,7 @@
     newGame();
   }
   function startMinesweeperGame() {
-    if (isMobileViewport2()) {
+    if (isMobileViewport3()) {
       stopMinesweeperGame();
       return;
     }
@@ -1392,8 +1403,11 @@
   }
 
   // src/ui/windows.js
-  function isMobileViewport3() {
-    return window.innerWidth <= MOBILE_BREAKPOINT;
+  function isMobileViewport4() {
+    const isTouchDevice = () => {
+      return navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    };
+    return window.innerWidth <= 768 && isTouchDevice();
   }
   function focusWindow(id) {
     document.querySelectorAll(".window").forEach((w) => w.classList.remove("focused"));
@@ -1424,7 +1438,7 @@
       if (id === "minesweeper") startMinesweeperGame();
       return;
     }
-    if (id === "dino" && !isMobileViewport3()) {
+    if (id === "dino" && !isMobileViewport4()) {
       const width = Math.floor(window.innerWidth * 0.78);
       const height = Math.floor((window.innerHeight - TASKBAR_HEIGHT) * 0.72);
       const finalW = Math.min(1180, Math.max(860, width));
@@ -1521,8 +1535,11 @@
   }
 
   // src/ui/interactions.js
-  function isMobileViewport4() {
-    return window.innerWidth <= MOBILE_BREAKPOINT;
+  function isMobileViewport5() {
+    const isTouchDevice = () => {
+      return navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    };
+    return window.innerWidth <= 768 && isTouchDevice();
   }
   function initializeWindowInteractions() {
     document.querySelectorAll(".window").forEach((win) => {
@@ -1534,7 +1551,7 @@
       let oy = 0;
       const win = tb.parentElement;
       tb.addEventListener("mousedown", (e) => {
-        if (isMobileViewport4()) return;
+        if (isMobileViewport5()) return;
         if (e.target.classList.contains("wc")) return;
         if (win.dataset.maximized === "true") return;
         dragging = true;
@@ -1566,7 +1583,7 @@
       let startH;
       const win = handle.parentElement;
       handle.addEventListener("mousedown", (e) => {
-        if (isMobileViewport4()) return;
+        if (isMobileViewport5()) return;
         resizing = true;
         startX = e.clientX;
         startY = e.clientY;
@@ -1587,7 +1604,7 @@
       });
     });
     window.addEventListener("resize", () => {
-      if (isMobileViewport4()) return;
+      if (isMobileViewport5()) return;
       document.querySelectorAll(".window").forEach((win) => {
         if (!win.classList.contains("hidden") && !win.classList.contains("minimized")) {
           clampWindowToViewport(win);
@@ -1664,7 +1681,7 @@
     initializeDinoInput(resetDinoGame);
   }
   window.addEventListener("load", () => {
-    if (isMobileViewport()) return;
+    if (isMobileViewport2()) return;
     openWindow("skills");
     setTimeout(() => {
       openWindow("about");

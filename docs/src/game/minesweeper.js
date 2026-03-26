@@ -1,5 +1,4 @@
 import { minesweeperState } from '../state.js';
-import { MOBILE_BREAKPOINT } from '../config.js';
 
 const PRESETS = {
   beginner: { width: 9, height: 9, mines: 10, label: 'beginner' },
@@ -16,7 +15,16 @@ const MS_ASSETS = {
 };
 
 function isMobileViewport() {
-  return window.innerWidth <= MOBILE_BREAKPOINT;
+  // Check if device has touch capability and small width
+  // Avoid false positives from resized desktop browsers
+  const isTouchDevice = () => {
+    return (
+      (navigator.maxTouchPoints > 0) ||
+      (navigator.msMaxTouchPoints > 0) ||
+      window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    );
+  };
+  return window.innerWidth <= 768 && isTouchDevice();
 }
 
 function getUi() {

@@ -1,10 +1,18 @@
 import { dinoState, uiState } from '../state.js';
-import { MOBILE_BREAKPOINT } from '../config.js';
 import { dinoJump } from './physics.js';
 import { ensureDinoCanvasSize } from './utils.js';
 
 export function isMobileViewport() {
-  return window.innerWidth <= MOBILE_BREAKPOINT;
+  // Check if device has touch capability and small width
+  // Avoid false positives from resized desktop browsers
+  const isTouchDevice = () => {
+    return (
+      (navigator.maxTouchPoints > 0) ||
+      (navigator.msMaxTouchPoints > 0) ||
+      window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    );
+  };
+  return window.innerWidth <= 768 && isTouchDevice();
 }
 
 export function initializeDinoInput(resetGameFn) {
