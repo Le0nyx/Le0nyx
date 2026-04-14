@@ -49,44 +49,6 @@
 
 
 ## 📌 What is this repository about?
-This repository is my resume and a collection of smaller personal projects that I coded at home for fun and to make easier certain tasks, such as a menu that opens on boot for different scenarios, and Arduino code for automation as well as that controls a little self made clock on my desk and some One-Day projects that I made for getting to know a language or some functions. Please also check out my biggest Project yet, called [Project Raven](https://github.com/Le0nyx/Project-Raven) or [Mobile Ollama](https://github.com/Le0nyx/MobileOllama).
+This repository is my resume and a collection of smaller personal projects that I coded at home for fun and to make easier certain tasks, such as a menu that opens on boot for different scenarios, and Arduino code for automation as well as that controls a little self made clock on my desk and some One-Day projects that I made for getting to know a language or some functions. Please also check out my biggest Project yet, called [Project Raven](https://github.com/Le0nyx/Project-Raven) or [Mobile Ollama](https://github.com/Le0nyx/MobileOllama) or just have a look around my repos if you'd like (more to be public soon).
 <br>
 <br>
-## ⚙️ Projects
-
-If you want here are some of my repos of projects that I did make public:
-<br>
-#### Project Raven is a flutter app coded by me and my biggest Project yet
-
-- [Project Raven](https://github.com/Le0nyx/Project-Raven)
-
-#### AI chatting app similar to ChatGPT, but without any unneccesarities
-
-- [Mobile Ollama](https://github.com/Le0nyx/MobileOllama)
-
-#### A Windows tray Application for quick access to other applications
-
-- [ScriptHub](https://github.com/Le0nyx/ScriptHub)
-
-#### Ollama Integration for Obsidian for better notes
-
-- [OllamaIntegration](https://github.com/Le0nyx/obsidianOllama-Integration)
-
-#### A github Backup Tool
-
-- [BackupWithGit](https://github.com/Le0nyx/simpleBackupWithGit)
-
-#### Self Coded AI that I trained and tries to predict Text like real AI do
-
-- [simpleMind-AI](https://github.com/Le0nyx/simpleMind-AI)
-
-#### A collection of Hackathon Projects
-
-- [Hackathons](https://github.com/Le0nyx/Hackathons)
-
-#### Small DIY Lamp for healthier eyes at night
-
-- [DIY-Lamp](https://github.com/Le0nyx/DIY-lamp)
-
-<br>
-
