@@ -2,10 +2,11 @@
 
 
 ## 👋 Hello, wondering who I am?
-- I am a student studying computer science
+- Currently working in IT
+- I studied computer science
 - I live in northern Italy
 - I also Code in my freetime for fun
-- I can Code in a variety of languages and currently I work on some Flutter apps
+- I can Code in a variety of languages
 - I like tinkering a lot with electronics, also in combination with 3D-printing
 - Currently working on diffrent projects
 <br>
@@ -18,8 +19,6 @@
   <img src="./docs/assets/skills/c.svg" height="40" alt="c logo"  />
   <img width="11" />
   <img src="./docs/assets/skills/cpp.svg" height="40" alt="cpp logo"  />
-  <img width="11" />
-  <img src="./docs/assets/skills/cs.svg" height="40" alt="cSharp logo"  />
   <img width="11" />
   <img src="./docs/assets/skills/arduino.svg" height="40" alt="arduino logo"  />
   <img width="11" />
